@@ -18,6 +18,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="{{asset('admin-lte/bower_components/font-awesome/css/font-awesome.min.css')}}">
     <!-- Ionicons -->
     <link rel="stylesheet" href="{{asset('admin-lte/bower_components/Ionicons/css/ionicons.min.css')}}">
+    <!--Date Picker-->
+    <link rel="stylesheet" href="{{asset('admin-lte/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')}}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{asset('admin-lte/dist/css/AdminLTE.min.css')}}">
     <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
@@ -207,8 +209,10 @@ desired effect
                     </ul>
                 </li>
             @if(Auth::user()->type == 'admin')
-                <li><a href="{{route('addTeacherForm')}}"><i class="fa fa-plus"></i> <span>Register Teacher</span></a></li>
-                {{--<li><a href="{{route('viewUserForm')}}"><i class="fa fa-eye-slash"></i> <span>View Users</span></a></li>--}}
+                    <li><a href="{{route('addTeacherForm')}}"><i class="fa fa-plus"></i> <span>Register Teacher</span></a></li>
+                    <li><a href="{{route('addStudentForm')}}"><i class="fa fa-plus"></i> <span>Register Student</span></a></li>
+
+                    {{--<li><a href="{{route('viewUserForm')}}"><i class="fa fa-eye-slash"></i> <span>View Users</span></a></li>--}}
             {{--@elseif(Auth::user()->type == 'uom_adm' or Auth::user()->type == 'ntc_adm')--}}
                 {{--<li><a href="{{route('addAdminPage')}}"><i class="fa fa-plus"></i> <span>Add Admin</span></a></li>--}}
                 {{--<li><a href="{{route('viewUserForm')}}"><i class="fa fa-eye-slash"></i> <span>View Users</span></a></li>--}}
@@ -321,6 +325,7 @@ desired effect
 <script src="{{asset('admin-lte/plugins/input-mask/jquery.inputmask.js')}}"></script>
 <script src="{{asset('admin-lte/plugins/input-mask/jquery.inputmask.date.extensions.js')}}"></script>
 <script src="{{asset('admin-lte/plugins/input-mask/jquery.inputmask.extensions.js')}}"></script>
+<script src="{{asset('admin-lte/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the

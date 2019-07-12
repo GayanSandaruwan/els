@@ -12,15 +12,21 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('home');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/admin/addTeacher', 'Auth\RegisterController@getAddTeacherForm')->name('addTeacherForm');
-Route::post('/admin/addTeacher','Auth\RegisterController@registerTeacher')->name('addTeacher');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/admin/addTeacher', 'Auth\RegisterController@getAddTeacherForm')->name('addTeacherForm');
+    Route::post('/admin/addTeacher','Auth\RegisterController@registerTeacher')->name('addTeacher');
+
+    Route::get('/admin/addStudent', 'Auth\RegisterController@getAddStudentForm')->name('addStudentForm');
+    Route::post('/admin/addStudent','Auth\RegisterController@registerStudent')->name('addStudent');
+
+});
+Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::get('/mail',function (){
