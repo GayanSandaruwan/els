@@ -253,10 +253,10 @@ desired effect
     <footer class="main-footer">
         <!-- To the right -->
         <div class="pull-right hidden-xs">
-            Tachyon - Faster Than Light
+
         </div>
         <!-- Default to the left -->
-        <strong>Copyright &copy; 2019 <a href="https://tachyontec.io">Tachyon Technologies</a>.</strong>
+      
     </footer>
 
     <!-- Control Sidebar -->
