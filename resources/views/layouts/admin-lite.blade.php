@@ -22,6 +22,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="{{asset('admin-lte/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')}}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{asset('admin-lte/dist/css/AdminLTE.min.css')}}">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{asset('admin-lte/bower_components/select2/dist/css/select2.min.css')}}">
+
     <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
           page. However, you can choose any other skin. Make sure you
           apply the skin class to the body tag so the changes take effect. -->
@@ -212,10 +215,11 @@ desired effect
                     <li><a href="{{route('addTeacherForm')}}"><i class="fa fa-plus"></i> <span>Register Teacher</span></a></li>
                     <li><a href="{{route('addStudentForm')}}"><i class="fa fa-plus"></i> <span>Register Student</span></a></li>
                     <li><a href="{{route('addParentForm')}}"><i class="fa fa-plus"></i> <span>Register Parent</span></a></li>
+                    <li><a href="{{route('studentToParentForm')}}"><i class="fa fa-plus"></i> <span>Assign Student to Parent</span></a></li>
 
                     {{--<li><a href="{{route('viewUserForm')}}"><i class="fa fa-eye-slash"></i> <span>View Users</span></a></li>--}}
-            {{--@elseif(Auth::user()->type == 'uom_adm' or Auth::user()->type == 'ntc_adm')--}}
-                {{--<li><a href="{{route('addAdminPage')}}"><i class="fa fa-plus"></i> <span>Add Admin</span></a></li>--}}
+            @elseif(Auth::user()->type == 'teacher')
+                <li><a href="{{route('studentToParentForm')}}"><i class="fa fa-plus"></i> <span>Assign Student to Parent</span></a></li>
                 {{--<li><a href="{{route('viewUserForm')}}"><i class="fa fa-eye-slash"></i> <span>View Users</span></a></li>--}}
                 @endif
             </ul>
@@ -253,10 +257,10 @@ desired effect
     <footer class="main-footer">
         <!-- To the right -->
         <div class="pull-right hidden-xs">
-            Tachyon - Faster Than Light
+            ELS - E learning System
         </div>
         <!-- Default to the left -->
-        <strong>Copyright &copy; 2019 <a href="https://tachyontec.io">Tachyon Technologies</a>.</strong>
+        <strong>Copyright &copy; 2019 <a href="#">E Learning System</a>.</strong>
     </footer>
 
     <!-- Control Sidebar -->
@@ -327,6 +331,7 @@ desired effect
 <script src="{{asset('admin-lte/plugins/input-mask/jquery.inputmask.date.extensions.js')}}"></script>
 <script src="{{asset('admin-lte/plugins/input-mask/jquery.inputmask.extensions.js')}}"></script>
 <script src="{{asset('admin-lte/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
+<script src="{{asset('admin-lte/bower_components/select2/dist/js/select2.full.min.js')}}"></script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
