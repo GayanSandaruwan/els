@@ -211,6 +211,7 @@ desired effect
             @if(Auth::user()->type == 'admin')
                     <li><a href="{{route('addTeacherForm')}}"><i class="fa fa-plus"></i> <span>Register Teacher</span></a></li>
                     <li><a href="{{route('addStudentForm')}}"><i class="fa fa-plus"></i> <span>Register Student</span></a></li>
+                    <li><a href="{{route('addParentForm')}}"><i class="fa fa-plus"></i> <span>Register Parent</span></a></li>
 
                     {{--<li><a href="{{route('viewUserForm')}}"><i class="fa fa-eye-slash"></i> <span>View Users</span></a></li>--}}
             {{--@elseif(Auth::user()->type == 'uom_adm' or Auth::user()->type == 'ntc_adm')--}}

@@ -187,6 +187,30 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="user-registered-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title text-center">Successfully Added the Teacher</h4>
+                </div>
+                <div class="modal-body">
+                    <img src="/images/success.png" class="center-block" style="width: 100px">
+                    @isset($new_user)
+                        <h4 class="modal-title text-center">Teacher with email id: {{$new_user->email}} successfully Added</h4>
+                    @endisset
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
 @endsection
 @section('additional-scripts')
     <script type="text/javascript">
@@ -194,5 +218,8 @@
         {{--autoclose: true--}}
         {{--})--}}
         $('[data-mask]').inputmask()
+        @isset($new_user)
+            $('#user-registered-modal').modal('show');
+        @endisset
     </script>
 @endsection

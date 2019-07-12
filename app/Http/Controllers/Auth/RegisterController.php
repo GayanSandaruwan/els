@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Mail\TeacherRegistered;
+use App\Parentc;
+use App\Student;
 use App\Teacher;
 use App\User;
 use App\Http\Controllers\Controller;
@@ -117,5 +119,118 @@ class RegisterController extends Controller
 
         return $this->registered($request, $user->id)
             ?: view('auth.registerTeacher')->with('new_user',$user);
+    }
+
+
+    protected function studentValidator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'grade' => ['required','numeric', 'min:1','max:13'],
+            'dob' => ['required','date'],
+            'address' => ['required','string'],
+            'contact'=> ['required','string'],
+        ]);
+    }
+
+    protected function createStudent(array $data, $id)
+    {
+//        var_dump($user);
+        return Student::create([
+            'grade' => $data['grade'],
+            'address' => $data['address'],
+            'contact' => $data['contact'],
+            'dob' => date('Y-m-d',strtotime($data['dob'])),
+            'user_id' => $id,
+        ]);
+    }
+    protected function createStudentUser(array $data)
+    {
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'type' => 'student',
+            'password' => Hash::make($data['password']),
+        ]);
+    }
+
+    public function getAddStudentForm(Request $request){
+//        var_dump($request);
+        return view('auth.registerStudent');
+    }
+
+    public function registerStudent(Request $request){
+//                var_dump($request);
+        $this->studentValidator($request->all())->validate();
+
+        event(new Registered($user = $this->createStudentUser($request->all())));
+
+//        var_dump($user);
+        $this->createStudent($request->all(),$user->id);
+
+        //Sending notification email
+        $email = new TeacherRegistered($user->email,$request->password);
+
+        Mail::to($user)->send($email);
+
+        return $this->registered($request, $user->id)
+            ?: view('auth.registerStudent')->with('new_user',$user);
+    }
+
+    protected function parentValidator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'nic' => ['required','string', 'min:9','max:12'],
+            'address' => ['required','string'],
+            'contact'=> ['required','string'],
+        ]);
+    }
+
+    protected function createParent(array $data, $id)
+    {
+//        var_dump($user);
+        return Parentc::create([
+            'address' => $data['address'],
+            'contact' => $data['contact'],
+            'nic' => $data['nic'],
+            'user_id' => $id,
+        ]);
+    }
+    protected function createParentUser(array $data)
+    {
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'type' => 'parent',
+            'password' => Hash::make($data['password']),
+        ]);
+    }
+
+    public function getAddParentForm(Request $request){
+//        var_dump($request);
+        return view('auth.registerParent');
+    }
+
+    public function registerParent(Request $request){
+//                var_dump($request);
+        $this->parentValidator($request->all())->validate();
+
+        event(new Registered($user = $this->createStudentUser($request->all())));
+
+//        var_dump($user);
+        $this->createParent($request->all(),$user->id);
+
+        //Sending notification email
+        $email = new TeacherRegistered($user->email,$request->password);
+
+        Mail::to($user)->send($email);
+
+        return $this->registered($request, $user->id)
+            ?: view('auth.registerParent')->with('new_user',$user);
     }
 }

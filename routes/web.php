@@ -25,6 +25,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/addStudent', 'Auth\RegisterController@getAddStudentForm')->name('addStudentForm');
     Route::post('/admin/addStudent','Auth\RegisterController@registerStudent')->name('addStudent');
 
+    Route::get('/admin/addParent', 'Auth\RegisterController@getAddParentForm')->name('addParentForm');
+    Route::post('/admin/addParent','Auth\RegisterController@registerParent')->name('addParent');
+
 });
 Route::get('/home', 'HomeController@index')->name('home');
 

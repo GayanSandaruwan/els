@@ -18,7 +18,7 @@ class CreateStudentsTable extends Migration
             $table->timestamps();
             $table->unsignedInteger('user_id');
             $table->string('address');
-            $table->string('nic');
+            $table->string('nic')->nullable();
             $table->date('dob');
             $table->string('grade');
             $table->string('contact');
