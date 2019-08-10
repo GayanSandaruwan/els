@@ -151,7 +151,7 @@
           // Set ARIA placeholder
           ariaID = _iCheck + '-' + Math.random().toString(36).replace('0.', ''),
 
-          // Parent & helper
+          // Parentc & helper
           parent = '<div class="' + className + '" ' + (aria ? 'role="' + node[_type] + '" ' : ''),
           helper;
 

@@ -220,7 +220,7 @@ class RegisterController extends Controller
 //                var_dump($request);
         $this->parentValidator($request->all())->validate();
 
-        event(new Registered($user = $this->createStudentUser($request->all())));
+        event(new Registered($user = $this->createParentUser($request->all())));
 
 //        var_dump($user);
         $this->createParent($request->all(),$user->id);

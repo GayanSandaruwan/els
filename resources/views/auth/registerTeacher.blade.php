@@ -13,7 +13,7 @@
         <li class="active">Add Teacher</li>
     </ol>
 @endsection
-@section('content')
+@section('content') Assign Student to Parent
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">

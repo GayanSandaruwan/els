@@ -22,6 +22,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="{{asset('admin-lte/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')}}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{asset('admin-lte/dist/css/AdminLTE.min.css')}}">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{asset('admin-lte/bower_components/select2/dist/css/select2.min.css')}}">
+
     <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
           page. However, you can choose any other skin. Make sure you
           apply the skin class to the body tag so the changes take effect. -->
@@ -212,12 +215,29 @@ desired effect
                     <li><a href="{{route('addTeacherForm')}}"><i class="fa fa-plus"></i> <span>Register Teacher</span></a></li>
                     <li><a href="{{route('addStudentForm')}}"><i class="fa fa-plus"></i> <span>Register Student</span></a></li>
                     <li><a href="{{route('addParentForm')}}"><i class="fa fa-plus"></i> <span>Register Parent</span></a></li>
+                    <li><a href="{{route('studentToParentForm')}}"><i class="fa fa-plus"></i> <span>Assign Student to Parent</span></a></li>
+                    <li><a href="{{route('addTimeSlotForm')}}"><i class="fa fa-plus"></i> <span>Create a Time Slot</span></a></li>
+                    <li><a href="{{route('studentToSlot')}}"><i class="fa fa-plus"></i> <span>Assign Academics to Time Slot</span></a></li>
+                    <li><a href="{{route('viewTimeSlotRequests')}}"><i class="fa fa-eye"></i> <span>View Requests</span></a></li>
 
                     {{--<li><a href="{{route('viewUserForm')}}"><i class="fa fa-eye-slash"></i> <span>View Users</span></a></li>--}}
-            {{--@elseif(Auth::user()->type == 'uom_adm' or Auth::user()->type == 'ntc_adm')--}}
-                {{--<li><a href="{{route('addAdminPage')}}"><i class="fa fa-plus"></i> <span>Add Admin</span></a></li>--}}
-                {{--<li><a href="{{route('viewUserForm')}}"><i class="fa fa-eye-slash"></i> <span>View Users</span></a></li>--}}
-                @endif
+            @elseif(Auth::user()->type == 'teacher')
+                <li><a href="{{route('studentToParentForm')}}"><i class="fa fa-plus"></i> <span>Assign Student to Parent</span></a></li>
+                    <li><a href="{{route('uploadQuiz')}}"><i class="fa fa-plus"></i> <span>Upload Quiz</span></a></li>
+                    <li><a href="{{route('uploadAss')}}"><i class="fa fa-plus"></i> <span>Upload Assignment</span></a></li>
+                <li><a href="{{route('viewAssignment')}}"><i class="fa fa-eye"></i> <span>View Assignment</span></a></li>
+                    <li><a href="{{route('viewQuizzes')}}"><i class="fa fa-eye"></i> <span>View Quizzes</span></a></li>
+                    <li><a href="{{route('viewmyslots')}}"><i class="fa fa-eye"></i> <span>View My TimeSlots</span></a></li>
+                    {{--                @endif--}}
+            @elseif(Auth::user()->type == 'student')
+                <li><a href="{{route('requestTime')}}"><i class="fa fa-plus"></i> <span>Request a Time Slot</span></a></li>
+                    <li><a href="{{route('viewQuizes')}}"><i class="fa fa-ete"></i> <span>viewQuizes</span></a></li>
+                    <li><a href="{{route('viewAssignment')}}"><i class="fa fa-eye"></i> <span>View My Assignments</span></a></li>
+                    <li><a href="{{route('getStudentSlots')}}"><i class="fa fa-eye"></i> <span>My Slots</span></a></li>
+                @elseif(Auth::user()->type == 'parent')
+                    <li><a href="{{route('viewmystudents')}}"><i class="fa fa-eye"></i> <span>View My Students</span></a></li>
+                    {{--<li><a href="{{route('viewUserForm')}}"><i class="fa fa-eye-slash"></i> <span>View Users</span></a></li>--}}
+            @endif
             </ul>
 
             <!-- /.sidebar-menu -->
@@ -254,9 +274,10 @@ desired effect
         <!-- To the right -->
         <div class="pull-right hidden-xs">
 
+            ELS - E learning System
         </div>
         <!-- Default to the left -->
-      
+        <strong>Copyright &copy; 2019 <a href="#">E Learning System</a>.</strong>
     </footer>
 
     <!-- Control Sidebar -->
@@ -327,6 +348,7 @@ desired effect
 <script src="{{asset('admin-lte/plugins/input-mask/jquery.inputmask.date.extensions.js')}}"></script>
 <script src="{{asset('admin-lte/plugins/input-mask/jquery.inputmask.extensions.js')}}"></script>
 <script src="{{asset('admin-lte/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
+<script src="{{asset('admin-lte/bower_components/select2/dist/js/select2.full.min.js')}}"></script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
@@ -335,3 +357,4 @@ desired effect
 @yield('additional-scripts')
 </body>
 </html>
+                                                                                                                                       
