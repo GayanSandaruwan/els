@@ -213,27 +213,37 @@ desired effect
                 </li>
             @if(Auth::user()->type == 'admin')
                     <li><a href="{{route('addTeacherForm')}}"><i class="fa fa-plus"></i> <span>Register Teacher</span></a></li>
+                    <li><a href="{{route('geteditDeleteTeacherForm')}}"><i class="fa fa-plus"></i> <span>Edit Teacher</span></a></li>
                     <li><a href="{{route('addStudentForm')}}"><i class="fa fa-plus"></i> <span>Register Student</span></a></li>
                     <li><a href="{{route('addParentForm')}}"><i class="fa fa-plus"></i> <span>Register Parent</span></a></li>
                     <li><a href="{{route('studentToParentForm')}}"><i class="fa fa-plus"></i> <span>Assign Student to Parent</span></a></li>
-                    <li><a href="{{route('addTimeSlotForm')}}"><i class="fa fa-plus"></i> <span>Create a Time Slot</span></a></li>
-                    <li><a href="{{route('studentToSlot')}}"><i class="fa fa-plus"></i> <span>Assign Academics to Time Slot</span></a></li>
+                    <li><a href="{{route('addTimeSlotForm')}}"><i class="fa fa-plus"></i> <span>Create a Live Session</span></a></li>
+                    <li><a href="{{route('studentToSlot')}}"><i class="fa fa-plus"></i> <span>Assign Academics</span></a></li>
                     <li><a href="{{route('viewTimeSlotRequests')}}"><i class="fa fa-eye"></i> <span>View Requests</span></a></li>
+                    <li><a href="{{route('viewLessons')}}"><i class="fa fa-eye"></i> <span>View Lessons</span></a></li>
+{{--                    <li><a href="{{route('editTeacher')}}"><i class="fa fa-eye"></i> <span>Edit Teacher</span></a></li>--}}
+{{--                    <li><a href="{{route('editStudent')}}"><i class="fa fa-eye"></i> <span>View Student</span></a></li>--}}
 
                     {{--<li><a href="{{route('viewUserForm')}}"><i class="fa fa-eye-slash"></i> <span>View Users</span></a></li>--}}
             @elseif(Auth::user()->type == 'teacher')
                 <li><a href="{{route('studentToParentForm')}}"><i class="fa fa-plus"></i> <span>Assign Student to Parent</span></a></li>
                     <li><a href="{{route('uploadQuiz')}}"><i class="fa fa-plus"></i> <span>Upload Quiz</span></a></li>
                     <li><a href="{{route('uploadAss')}}"><i class="fa fa-plus"></i> <span>Upload Assignment</span></a></li>
-                <li><a href="{{route('viewAssignment')}}"><i class="fa fa-eye"></i> <span>View Assignment</span></a></li>
+                    <li><a href="{{route('uploadLesson')}}"><i class="fa fa-eye"></i> <span>Upload Lessons</span></a></li>
+                    <li><a href="{{route('viewAssignment')}}"><i class="fa fa-eye"></i> <span>View Assignment</span></a></li>
                     <li><a href="{{route('viewQuizzes')}}"><i class="fa fa-eye"></i> <span>View Quizzes</span></a></li>
-                    <li><a href="{{route('viewmyslots')}}"><i class="fa fa-eye"></i> <span>View My TimeSlots</span></a></li>
+                    <li><a href="{{route('viewLessons')}}"><i class="fa fa-eye"></i> <span>View Lessons</span></a></li>
+                    <li><a href="{{route('viewmyslots')}}"><i class="fa fa-eye"></i> <span>View My Live Sessions</span></a></li>
+
                     {{--                @endif--}}
             @elseif(Auth::user()->type == 'student')
-                <li><a href="{{route('requestTime')}}"><i class="fa fa-plus"></i> <span>Request a Time Slot</span></a></li>
-                    <li><a href="{{route('viewQuizes')}}"><i class="fa fa-ete"></i> <span>viewQuizes</span></a></li>
+                <li><a href="{{route('requestTime')}}"><i class="fa fa-plus"></i> <span>Request a Live Session</span></a></li>
+                    <li><a href="{{route('viewQuizes')}}"><i class="fa fa-eye"></i> <span>viewQuizes</span></a></li>
                     <li><a href="{{route('viewAssignment')}}"><i class="fa fa-eye"></i> <span>View My Assignments</span></a></li>
-                    <li><a href="{{route('getStudentSlots')}}"><i class="fa fa-eye"></i> <span>My Slots</span></a></li>
+                    <li><a href="{{route('getStudentSlots')}}"><i class="fa fa-eye"></i> <span>View Live Sessions</span></a></li>
+                    <li><a href="{{route('viewLiveQuizzes')}}"><i class="fa fa-eye"></i> <span>View Live Session Quizzes</span></a></li>
+                    <li><a href="{{route('viewLessons')}}"><i class="fa fa-eye"></i> <span>View Lessons</span></a></li>
+
                 @elseif(Auth::user()->type == 'parent')
                     <li><a href="{{route('viewmystudents')}}"><i class="fa fa-eye"></i> <span>View My Students</span></a></li>
                     {{--<li><a href="{{route('viewUserForm')}}"><i class="fa fa-eye-slash"></i> <span>View Users</span></a></li>--}}
@@ -246,7 +256,8 @@ desired effect
     </aside>
 
     <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
+    <div class="content-wrapper" style="overflow: hidden;" >
+
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>

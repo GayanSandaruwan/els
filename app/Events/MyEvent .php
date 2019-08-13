@@ -16,14 +16,14 @@ class MyEvent implements ShouldBroadcast
     public $message;
     public $sender;
     public $channel;
-    public $time;
+//    public $time;
 
-    public function __construct($sender,$message,$time,$channel)
+    public function __construct($sender,$message,$channel)
     {
         $this->message = $message;
         $this->sender = $sender;
         $this->channel = $channel;
-        $time->time=$time;
+//        $time->time=$time;
     }
 
     public function broadcastOn()

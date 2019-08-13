@@ -16,13 +16,15 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-10">
                 @isset($children)
                     @foreach($children as $child)
+                        <div class="card" style="background-color: #97cbff ; padding: 10px; padding-bottom: 2px;">
+
                         <h2>{{$child->name}}</h2>
-                        <div class="card">
+                        <div class="card" align="center">
                             <form method="get" action={{ route('viewstudent', ['id' => $child->id]) }}>
-                                <button id="view" type="submit"  class="btn btn-primary" data-dismiss="modal">View Quizzes</button>
+                                <button id="view"style="margin-bottom:15px; width: 500px;" type="submit"  class="btn btn-primary" data-dismiss="modal">View Quizzes</button>
                             </form>
                         </div>
                     @endforeach

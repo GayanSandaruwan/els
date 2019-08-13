@@ -16,12 +16,13 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-10">
                 @isset($quizzes)
                     @foreach($quizzes as $quiz)
-                        <h2>{{$quiz->quiz_name}}</h2>
-                        <div class="card">
-                            <div class="card-header">Create By - {{$quiz->created_by}}</div>
+
+                        <div class="card" style="background-color: #97cbff ; padding: 10px; padding-bottom: 2px;">
+                            <h2>{{$quiz->quiz_name}}</h2>
+                        <div class="card-header">Create By - {{$quiz->created_by}}</div>
                             <div class="card-body">Marks - {{$quiz->mark}}</div>
 
 {{--                                <form method="post" action={{ route('addComment') }}>--}}
@@ -58,6 +59,7 @@
 {{--                                    <button class="btn-primary">Activate</button>--}}
 {{--                                </div>--}}
                         </div>
+            <br/>
                     @endforeach
                 @endisset
                 </div>

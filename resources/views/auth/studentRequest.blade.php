@@ -1,16 +1,16 @@
 @extends('layouts.admin-lite')
 @section('title')
-    Request Slot
+    Request A Live Session
 @endsection
 @section('page-header')
-    Request Slot
+    Request A Live Session
 @endsection
 @section('optional-header')
 @endsection
 @section('level')
     <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Request Slot</a></li>
-        <li class="active">Request Slot</li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> Request A Live Session</a></li>
+        <li class="active">Request A Live Session</li>
     </ol>
 @endsection
 @section('content')
@@ -22,7 +22,7 @@
                         <script>
                             console.log("Test")
                         </script>
-                        <div class="card-header" style="color: green; font-size: large">Successfully Added A New Slot Request {{$new_request->id }}</div>
+                        <div class="card-header" style="color: green; font-size: large">Successfully Added A New Virtual Class {{$new_request->id }}</div>
                     @endisset
                     <div class="card-body">
                         <form method="POST" action="{{ route('submitTimeRequest') }}" enctype="multipart/form-data">
@@ -56,7 +56,7 @@
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
-                                        {{ __('Request a Slot') }}
+                                        {{ __('Request a Live Session') }}
                                     </button>
                                 </div>
                             </div>
@@ -76,7 +76,7 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title text-center">Successfully Added the time slot</h4>
+                    <h4 class="modal-title text-center">Successfully Added Live Session Request</h4>
                 </div>
                 <div class="modal-body">
                     <img src="/images/success.png" class="center-block" style="width: 100px">

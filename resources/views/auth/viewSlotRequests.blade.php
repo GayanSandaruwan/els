@@ -16,18 +16,20 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-10">
                 @isset($requests)
                     @foreach($requests as $req)
+                        <div class="card" style="background-color: #97cbff ; padding: 10px; padding-bottom: 0px;">
                         <h3>{{$req->reason}}</h3>
-                        <div class="card">
-                            <div class="card-header">Create By - {{$req->user_id}}</div>
-                                <div class="col-md-2">
+
+                            <div class="card-header"><strong>Create By - {{$req->name}} [{{$req->email}}] at {{$req->created_at}}</strong></div>
+                            <div class="card" align="center">
 {{--                                    <form method="get" action={{$quiz->path}}>--}}
-                                        <button id="button{{$req->id}}" type="button" onclick="markRead({{$req->id}})" align="left" class="btn btn-primary" data-dismiss="modal">Mark As Read</button>
+                                        <button id="button{{$req->id}}" type="button" onclick="markRead({{$req->id}})" style="margin-bottom:15px; width: 500px;" align="left" class="btn btn-primary" data-dismiss="modal">Mark As Read</button>
 {{--                                    </form>--}}
                                 </div>
                         </div>
+
             </br>
                     @endforeach
                 @endisset

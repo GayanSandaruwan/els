@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Conversations extends Model
 {
     //
-    protected $fillable = ['status','slot_id'];
+    protected $fillable = ['status','slot_id','type'];
 }

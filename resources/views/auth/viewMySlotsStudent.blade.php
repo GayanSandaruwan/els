@@ -16,17 +16,20 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-10">
                 @isset($slots)
                     @foreach($slots as $slot)
-                        <h3>{{$slot->date}} from {{$slot->start_time}} to {{$slot->end_time}}</h3>
-                        <form method="GET" action="{{ route('getStudentConversations', ['id' => $slot->id]) }}" enctype="multipart/form-data">
+                        <div class="card" style="background-color: #97cbff ; padding: 10px; padding-bottom: 0px;">
+                            <h3>Starts in <strong>{{$slot->date}}</strong> from  <strong>{{$slot->start_time}}</strong> to <strong>{{$slot->end_time}}</strong></h3>
+                            <form method="GET" action="{{ route('getStudentConversations', ['id' => $slot->id]) }}" enctype="multipart/form-data">
 {{--                            @csrf--}}
-                        <div class="card">
+                        <div class="card" align="center">
                             <input value="${{$slot->id}}" hidden>
-                            <button id="button" type="submit" align="left" class="btn btn-primary" data-dismiss="modal">Start</button>
+                            <button id="button" type="submit" align="center" style="margin-bottom:15px; width: 500px;" class="btn btn-primary" data-dismiss="modal">Start</button>
+
                         </div>
                         </form>
+                        </div>
             </br>
                     @endforeach
                 @endisset

@@ -3,7 +3,8 @@
     viewMySlots
 @endsection
 @section('page-header')
-
+Create Sessions
+    @endsection
 @section('optional-header')
 @endsection
 @section('level')
@@ -23,6 +24,21 @@
                         @endisset
                     @isset($students)
                         <div class="form-group row">
+                            <label for="parent_id" class="col-md-4 col-form-label text-md-right">{{ __('Session Type') }}</label>
+
+                            <div class="col-md-6">
+                                <select id="type" name="type" data-placeholder="Select a student" class="selectpicker"  data-live-search="true" required autofocus>
+                                    <option value="live Session">Live Session</option>
+                                    <option value="High">High</option>
+                                    <option value="Mid">Mid</option>
+                                    <option value="Low">Low</option>
+
+                                </select>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="parent_id" class="col-md-4 col-form-label text-md-right">{{ __('Select Students') }}</label>
 
                             <div class="col-md-6">
@@ -38,20 +54,55 @@
                                 @enderror
                             </div>
                         </div>
+
+
+
                     @endisset
-                    <button id="button" type="submit" align="left"  class="btn btn-primary" data-dismiss="modal">Create a New Conversation</button>
+                    <button id="button" type="submit" align="left"  style="margin-bottom:15px; "  class="btn btn-primary" data-dismiss="modal">Create a New Conversation</button>
+                <br/>
                 </form>
                  @endisset
-            <div id="chats" class="col-md-8">
+            <div id="chats" class="col-md-10">
                 @isset($conver)
                     @foreach($conver as $conv)
+                        <div class="card" style="background-color: #97cbff ; padding: 10px; padding-bottom: 0px;">
+
                         <div id="conversation{{$conv->id}}">
-                            <h3>Conversation {{$conv->id}}</h3>
+                            <h3>Conversation - <strong>{{$conv->type}}</strong></h3>
                             <form method="GET" action="{{ route('getConv', ['id' => $conv->id]) }}" enctype="multipart/form-data">
-                                <div class="card">
-                                    <button id="button" type="submit" align="left" class="btn btn-primary" data-dismiss="modal">Join</button>
+
+
+                                <div class="card" align="center">
+                                    <button id="button" type="submit" align="center" style="margin-bottom:15px; width: 500px;"  class="btn btn-primary" data-dismiss="modal">Join Conversation</button>
+                                    @isset($teacher)
+                                    <table id="example" class="table table-striped table-bordered" style="width:100%">
+                                        <thead>
+                                        <tr>
+                                            <th>Student Name</th>
+                                            <th>Student ID</th>
+                                            <th>Attempt</th>
+                                            <th>Marks</th>
+                                            <th>Attempted At</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @isset($marks[$loop->index])
+                                            @foreach($marks[$loop->index] as $st)
+                                                <tr>
+                                                    <td>{{$st->name}}</td>
+                                                    <td>{{$st->id}}</td>
+                                                    <td>{{$st->attempt}}</td>
+                                                    <td>{{$st->mark}}</td>
+                                                    <td>{{$st->created_at}}</td>
+                                                </tr>
+                                            @endforeach
+                                        @endisset
+                                        </tbody>
+                                    </table>
+                                        @endisset
                                 </div>
                             </form>
+                        </div>
                         </div>
             </br>
                     @endforeach

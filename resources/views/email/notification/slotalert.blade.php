@@ -1,18 +1,18 @@
 
 @component('mail::message')
+Dear User,
 
-    You Have been Successfully added to the new virtual class.
-    Date : {{$date}}
-    Time : {{$start_time}}
-    End Time : {{$end_time}}
-    Duration:{{$duration}}
+You Have been Successfully added to a new Live Session.
+Date : {{$date}}
+Time : {{$start_time}}
+End Time : {{$end_time}}
+Duration:{{$duration}}
 
-    @component('mail::button', ['url'=>route('login')])
-        Login to E Learning System
-    @endcomponent
+@component('mail::button', ['url' => 'http://localhost:8000/login'])
+    View <Details></Details>
+@endcomponent
 
+Thanks,
 
-    Thanks,
-
-    {{ config('app.name') }}
+E Learning System
 @endcomponent

@@ -16,23 +16,44 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-10">
                 @isset($quizzes)
                     @foreach($quizzes as $quiz)
+                        <div class="card" style="background-color: #97cbff ; padding: 10px; padding-bottom: 0px;">
+
                         <h2>{{$quiz->quiz_name}}</h2>
-                        <div class="card">
-                            <div class="card-header">Create By - {{$quiz->created_by}}</div>
-                            <div class="card-body">Create at - {{$quiz->created_at}}</div>
-                            <div class="card-body">Marks - {{$quiz->mark}}</div>
+{{--                            <table id="example" class="table table-striped table-bordered" style="width:100%">--}}
+{{--                                <thead>--}}
+{{--                                <tr>--}}
+
+{{--                                    <th><strong>Create By </strong></th>--}}
+{{--                                    <th>{{$quiz->created_by}}</th>--}}
+{{--                                </tr>--}}
+{{--                                </thead>--}}
+{{--                                <tr>--}}
+{{--                                    <th><strong>Create at </strong></th>--}}
+{{--                                    <th>{{$quiz->created_at}}</th>--}}
+{{--                                </tr>--}}
+{{--                                <tr>--}}
+{{--                                    <th><strong>Marks </strong></th>--}}
+{{--                                    <th>{{$quiz->mark}}</th>--}}
+{{--                                </tr>--}}
+{{--                            </table>--}}
+                            <div class="card-header"><strong>Create By -</strong> {{$quiz->created_by}}</div>
+                            <div class="card-body"><strong>Create at -</strong>{{$quiz->created_at}}</div>
+                            <div class="card-body"><strong>Marks -</strong> {{$quiz->mark}}</div>
                             @if($quiz->active==True)
                                 <form method="get" action={{$quiz->url}}>
                                     <button id="view" type="button" onclick="window.open('quiz/{{$quiz->url}}')" class="btn btn-primary" data-dismiss="modal">Attempt Quiz</button>
                                 </form>
                             @else()
-                                <div>No attempted are allowed</div>
+                                <div><strong>No attempted are allowed!<strong></div>
                             @endif
+                            <div class="card" style="background-color: whitesmoke ; padding: 10px; padding-bottom: 0px;">
+
                             <h4>Parent Comments</h4>
                             <div id="body{{$quiz->id}}" class="panel-body panel-height" style="overflow-y:auto">
+
                                 @isset($comments[$loop->index])
 
                                     @foreach($comments[$loop->index] as $ct)
@@ -46,6 +67,7 @@
                                         </ui>
                                     @endforeach
                                 @endisset
+                                </div>
                             </div>
 
 
@@ -54,9 +76,12 @@
 {{--                                    <button class="btn-primary">Activate</button>--}}
 {{--                                </div>--}}
                         </div>
+<br/>
+
                     @endforeach
                 @endisset
                 </div>
+        </div>
             </div>
         </div>
 

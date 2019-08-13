@@ -8,17 +8,19 @@
                 <div class="card-header">Dashboard</div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+{{--                    @if (session('status'))--}}
+{{--                        <div class="alert alert-success" role="alert">--}}
+{{--                            {{ session('status') }}--}}
+{{--                        </div>--}}
+{{--                    @endif--}}
                     @if (session('quiz_mark'))
                         <div class="alert alert-success" role="alert">
                            You got  {{ session('quiz_mark') }}% marks for quiz "{{ session('quiz_name') }}"
                         </div>
                     @endif
                     You are logged in as a {{Auth::user()->type}} !
+                    
+
                 </div>
 
             </div>
@@ -26,17 +28,20 @@
     </div>
 </div>
 </br>
-    <div class="row">
-        <div style="background-color: #3c8dbc ; padding: 10px; height:150px; border: 1px solid green;" class="col-md-3">ICT Grade 6</div>
-        <div style="background-color: #3c8dbc ; padding: 10px; height:150px; border: 1px solid green;" class="col-md-3">ICT Grade 7</div>
-        <div style="background-color: #3c8dbc ; padding: 10px; height:150px; border: 1px solid green;" class="col-md-3">ICT Grade 8</div>
-        <div style="background-color: #3c8dbc ; padding: 10px; height:150px; border: 1px solid green;" class="col-md-3">ICT Grade 9</div>
-    </div>
-    <div class="row">
-        <div style="background-color: #3c8dbc ; padding: 10px; height:150px; border: 1px solid green;" class="col-md-3">ICT Grade 10</div>
-        <div style="background-color: #3c8dbc ; padding: 10px; height:150px; border: 1px solid green;" class="col-md-3">ICT Grade 11</div>
-        <div style="background-color: #3c8dbc ; padding: 10px; height:150px; border: 1px solid green;" class="col-md-3">ICT Grade 12</div>
-    </div>
+<div class="row"></div>
+<div class="row"></div>
+<div class="row" data-height="100 px;"></div>
+
+{{--    <div class="row">--}}
+{{--        <div class="col-sm-4 pull-right">--}}
+{{--            <img src="/images/elearning-logo.png" width="100 px;" height="50 px;" align="right">--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--    <div class="row">--}}
+{{--        <div style="background-color: #3c8dbc ; padding: 10px; height:150px; border: 1px solid green;" class="col-md-3">ICT Grade 10</div>--}}
+{{--        <div style="background-color: #3c8dbc ; padding: 10px; height:150px; border: 1px solid green;" class="col-md-3">ICT Grade 11</div>--}}
+{{--        <div style="background-color: #3c8dbc ; padding: 10px; height:150px; border: 1px solid green;" class="col-md-3">ICT Grade 12</div>--}}
+{{--    </div>--}}
 </div>
 <div class="modal fade" id="modal">
     <div class="modal-dialog">
@@ -56,6 +61,11 @@
 </div>
 @endsection
 @section('additional-scripts')
+    <style>
+        .row{
+            height: 100px;
+        }
+    </style>
     <script type="text/javascript">
         @isset($submitted)
          $('#modal').modal('show');

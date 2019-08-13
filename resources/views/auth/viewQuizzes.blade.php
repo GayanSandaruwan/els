@@ -15,44 +15,851 @@
 @endsection
 @section('content')
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                @isset($quizzes)
-                    @foreach($quizzes as $quiz)
-                        <h2>{{$quiz->quiz_name}}r</h2>
-                        <div class="card">
-                            <form method="POST" action="{{ route('updateQuiz') }}" enctype="multipart/form-data">
-                                @csrf
-                            <div class="card-header">Create By - {{$quiz->created_by}}</div>
-                            <div class="card-body">Create at - {{$quiz->created_at}}</div>
-                                <div class="row">
-                                    <div class="col-md-4">
-{{--                                         <input type="text" id="myInput{{$quiz->id}}"  readonly value='/quiz/{{$quiz->url}}' >--}}
-                                            <input type="text" name="id" id="myInput{{$quiz->id}}"  readonly value=$quiz->id >
-                                    </div>
-                                </div>
-                            <div class="row">
-                                <div class="col-md-2">
-                                    @if($quiz->state=='deactivate')
-                                    <button id="state" type="submit"  class="btn btn-primary" data-dismiss="modal">Activate</button>
-                                        <input id="newState" name="newState" type="hidden" value="active">
+           <div class="row justify-content-center">
 
-                                    @else()
-                                    <button id="state" type="submit"  class="btn btn-primary" data-dismiss="modal">Deactivate</button>
-                                        <input id="newState" name="newState" type="hidden" value="deactivate">
-                                     @endif
-                                </div>
-                                <div class="col-md-2">
-{{--                                    <form method="get" action={{$quiz->path}}>--}}
-                                        <button id="download" type="button" onclick="myFunction({{$quiz->id}})" class="btn btn-primary" data-dismiss="modal">Copy Link</button>
-{{--                                    </form>--}}
-                                </div>
-                            </div>
-                            </form>
-                        </div>
-                    @endforeach
-                @endisset
-                </div>
+
+               <div class="col-md-10">
+                   @isset($quizzes)
+                       <h1>Unit 1</h1>
+                       @foreach($quizzes as $quiz)
+                           @if($quiz->Unit==1)
+                               <div class="card" style="background-color: #97cbff ; padding: 10px; padding-bottom: 0px;">
+                                   <h2>{{$quiz->quiz_name}}</h2>
+
+                                   <form method="POST" action="{{ route('updateQuiz') }}" enctype="multipart/form-data">
+                                       @csrf
+                                       <div class="card-header"><strong>Create By -</strong> {{$quiz->created_by}}</div>
+                                       <div class="card-body"><strong>Create at -</strong>  {{$quiz->created_at}}</div>
+                                       <div class="row">
+                                           <div class="col-md-4">
+                                               {{--                                         <input type="text" id="myInput{{$quiz->id}}"  readonly value='/quiz/{{$quiz->url}}' >--}}
+                                               <input type="hidden" name="id" id="myInput{{$quiz->id}}"   value={{$quiz->id}} readonly>
+                                           </div>
+                                       </div>
+                                       <div class="row">
+                                           <div class="col-md-2">
+                                               @if($quiz->status=='deactivate')
+                                                   <button id="state" type="submit"  class="btn btn-primary" style="margin-bottom:15px;"  data-dismiss="modal">Activate</button>
+                                                   <input id="newState" name="newState" type="hidden" value="active">
+
+                                               @else()
+                                                   <button id="state" type="submit"  class="btn btn-primary" style="margin-bottom:15px;" data-dismiss="modal">Deactivate</button>
+                                                   <input id="newState" name="newState" type="hidden" value="deactivate">
+                                               @endif
+                                           </div>
+                                           <br/>
+                                           <div class="col-md-2">
+                                               {{--                                    <form method="get" action={{$quiz->path}}>--}}
+                                               {{--                                        <button id="download" type="button" onclick="myFunction({{$quiz->id}})" class="btn btn-primary" data-dismiss="modal">Copy Link</button>--}}
+                                               {{--                                    </form>--}}
+                                           </div>
+                                       </div>
+                                       <div>
+                                           <table id="example" class="table table-striped table-bordered" style="width:100%">
+                                               <thead>
+                                               <tr>
+                                                   <th>Student Name</th>
+                                                   <th>Student ID</th>
+                                                   <th>Attempt</th>
+                                                   <th>Marks</th>
+                                                   <th>Attempted At</th>
+                                               </tr>
+                                               </thead>
+                                               <tbody>
+                                               @isset($studnetQuiz[$loop->index])
+                                                   @foreach($studnetQuiz[$loop->index] as $st)
+                                                       <tr>
+                                                           <td>{{$st->name}}</td>
+                                                           <td>{{$st->id}}</td>
+                                                           <td>{{$st->mark}}</td>
+                                                           <td>{{$st->attempt}}</td>
+                                                           <td>{{$st->updated_at}}</td>
+                                                       </tr>
+                                                   @endforeach
+                                               @endisset
+                                               </tbody>
+                                           </table>
+                                       </div>
+                                   </form>
+                               </div>
+                           @endif
+                       @endforeach
+                   @endisset
+               </div>
+
+
+
+               <div class="col-md-10">
+                   @isset($quizzes)
+                       <h1>Unit 2</h1>
+                       @foreach($quizzes as $quiz)
+                           @if($quiz->Unit==2)
+                               <div class="card" style="background-color: #97cbff ; padding: 10px; padding-bottom: 0px;">
+                                   <h2>{{$quiz->quiz_name}}</h2>
+
+                                   <form method="POST" action="{{ route('updateQuiz') }}" enctype="multipart/form-data">
+                                       @csrf
+                                       <div class="card-header"><strong>Create By -</strong> {{$quiz->created_by}}</div>
+                                       <div class="card-body"><strong>Create at -</strong>  {{$quiz->created_at}}</div>
+                                       <div class="row">
+                                           <div class="col-md-4">
+                                               {{--                                         <input type="text" id="myInput{{$quiz->id}}"  readonly value='/quiz/{{$quiz->url}}' >--}}
+                                               <input type="hidden" name="id" id="myInput{{$quiz->id}}"   value={{$quiz->id}} readonly>
+                                           </div>
+                                       </div>
+                                       <div class="row">
+                                           <div class="col-md-2">
+                                               @if($quiz->status=='deactivate')
+                                                   <button id="state" type="submit"  class="btn btn-primary" style="margin-bottom:15px;"  data-dismiss="modal">Activate</button>
+                                                   <input id="newState" name="newState" type="hidden" value="active">
+
+                                               @else()
+                                                   <button id="state" type="submit"  class="btn btn-primary" style="margin-bottom:15px;" data-dismiss="modal">Deactivate</button>
+                                                   <input id="newState" name="newState" type="hidden" value="deactivate">
+                                               @endif
+                                           </div>
+                                           <br/>
+                                           <div class="col-md-2">
+                                               {{--                                    <form method="get" action={{$quiz->path}}>--}}
+                                               {{--                                        <button id="download" type="button" onclick="myFunction({{$quiz->id}})" class="btn btn-primary" data-dismiss="modal">Copy Link</button>--}}
+                                               {{--                                    </form>--}}
+                                           </div>
+                                       </div>
+                                       <div>
+                                           <table id="example" class="table table-striped table-bordered" style="width:100%">
+                                               <thead>
+                                               <tr>
+                                                   <th>Student Name</th>
+                                                   <th>Student ID</th>
+                                                   <th>Attempt</th>
+                                                   <th>Marks</th>
+                                                   <th>Attempted At</th>
+                                               </tr>
+                                               </thead>
+                                               <tbody>
+                                               @isset($studnetQuiz[$loop->index])
+                                                   @foreach($studnetQuiz[$loop->index] as $st)
+                                                       <tr>
+                                                           <td>{{$st->name}}</td>
+                                                           <td>{{$st->id}}</td>
+                                                           <td>{{$st->mark}}</td>
+                                                           <td>{{$st->attempt}}</td>
+                                                           <td>{{$st->updated_at}}</td>
+                                                       </tr>
+                                                   @endforeach
+                                               @endisset
+                                               </tbody>
+                                           </table>
+                                       </div>
+                                   </form>
+                               </div>
+                           @endif
+                       @endforeach
+                   @endisset
+               </div>
+
+
+               <div class="col-md-10">
+                   @isset($quizzes)
+                       <h1>Unit 3</h1>
+                       @foreach($quizzes as $quiz)
+                           @if($quiz->Unit==3)
+                               <div class="card" style="background-color: #97cbff ; padding: 10px; padding-bottom: 0px;">
+                                   <h2>{{$quiz->quiz_name}}</h2>
+
+                                   <form method="POST" action="{{ route('updateQuiz') }}" enctype="multipart/form-data">
+                                       @csrf
+                                       <div class="card-header"><strong>Create By -</strong> {{$quiz->created_by}}</div>
+                                       <div class="card-body"><strong>Create at -</strong>  {{$quiz->created_at}}</div>
+                                       <div class="row">
+                                           <div class="col-md-4">
+                                               {{--                                         <input type="text" id="myInput{{$quiz->id}}"  readonly value='/quiz/{{$quiz->url}}' >--}}
+                                               <input type="hidden" name="id" id="myInput{{$quiz->id}}"   value={{$quiz->id}} readonly>
+                                           </div>
+                                       </div>
+                                       <div class="row">
+                                           <div class="col-md-2">
+                                               @if($quiz->status=='deactivate')
+                                                   <button id="state" type="submit"  class="btn btn-primary" style="margin-bottom:15px;"  data-dismiss="modal">Activate</button>
+                                                   <input id="newState" name="newState" type="hidden" value="active">
+
+                                               @else()
+                                                   <button id="state" type="submit"  class="btn btn-primary" style="margin-bottom:15px;" data-dismiss="modal">Deactivate</button>
+                                                   <input id="newState" name="newState" type="hidden" value="deactivate">
+                                               @endif
+                                           </div>
+                                           <br/>
+                                           <div class="col-md-2">
+                                               {{--                                    <form method="get" action={{$quiz->path}}>--}}
+                                               {{--                                        <button id="download" type="button" onclick="myFunction({{$quiz->id}})" class="btn btn-primary" data-dismiss="modal">Copy Link</button>--}}
+                                               {{--                                    </form>--}}
+                                           </div>
+                                       </div>
+                                       <div>
+                                           <table id="example" class="table table-striped table-bordered" style="width:100%">
+                                               <thead>
+                                               <tr>
+                                                   <th>Student Name</th>
+                                                   <th>Student ID</th>
+                                                   <th>Attempt</th>
+                                                   <th>Marks</th>
+                                                   <th>Attempted At</th>
+                                               </tr>
+                                               </thead>
+                                               <tbody>
+                                               @isset($studnetQuiz[$loop->index])
+                                                   @foreach($studnetQuiz[$loop->index] as $st)
+                                                       <tr>
+                                                           <td>{{$st->name}}</td>
+                                                           <td>{{$st->id}}</td>
+                                                           <td>{{$st->mark}}</td>
+                                                           <td>{{$st->attempt}}</td>
+                                                           <td>{{$st->updated_at}}</td>
+                                                       </tr>
+                                                   @endforeach
+                                               @endisset
+                                               </tbody>
+                                           </table>
+                                       </div>
+                                   </form>
+                               </div>
+                           @endif
+                       @endforeach
+                   @endisset
+               </div>
+
+
+               <div class="col-md-10">
+                   @isset($quizzes)
+                       <h1>Unit 4</h1>
+                       @foreach($quizzes as $quiz)
+                           @if($quiz->Unit==4)
+                               <div class="card" style="background-color: #97cbff ; padding: 10px; padding-bottom: 0px;">
+                                   <h2>{{$quiz->quiz_name}}</h2>
+
+                                   <form method="POST" action="{{ route('updateQuiz') }}" enctype="multipart/form-data">
+                                       @csrf
+                                       <div class="card-header"><strong>Create By -</strong> {{$quiz->created_by}}</div>
+                                       <div class="card-body"><strong>Create at -</strong>  {{$quiz->created_at}}</div>
+                                       <div class="row">
+                                           <div class="col-md-4">
+                                               {{--                                         <input type="text" id="myInput{{$quiz->id}}"  readonly value='/quiz/{{$quiz->url}}' >--}}
+                                               <input type="hidden" name="id" id="myInput{{$quiz->id}}"   value={{$quiz->id}} readonly>
+                                           </div>
+                                       </div>
+                                       <div class="row">
+                                           <div class="col-md-2">
+                                               @if($quiz->status=='deactivate')
+                                                   <button id="state" type="submit"  class="btn btn-primary" style="margin-bottom:15px;"  data-dismiss="modal">Activate</button>
+                                                   <input id="newState" name="newState" type="hidden" value="active">
+
+                                               @else()
+                                                   <button id="state" type="submit"  class="btn btn-primary" style="margin-bottom:15px;" data-dismiss="modal">Deactivate</button>
+                                                   <input id="newState" name="newState" type="hidden" value="deactivate">
+                                               @endif
+                                           </div>
+                                           <br/>
+                                           <div class="col-md-2">
+                                               {{--                                    <form method="get" action={{$quiz->path}}>--}}
+                                               {{--                                        <button id="download" type="button" onclick="myFunction({{$quiz->id}})" class="btn btn-primary" data-dismiss="modal">Copy Link</button>--}}
+                                               {{--                                    </form>--}}
+                                           </div>
+                                       </div>
+                                       <div>
+                                           <table id="example" class="table table-striped table-bordered" style="width:100%">
+                                               <thead>
+                                               <tr>
+                                                   <th>Student Name</th>
+                                                   <th>Student ID</th>
+                                                   <th>Attempt</th>
+                                                   <th>Marks</th>
+                                                   <th>Attempted At</th>
+                                               </tr>
+                                               </thead>
+                                               <tbody>
+                                               @isset($studnetQuiz[$loop->index])
+                                                   @foreach($studnetQuiz[$loop->index] as $st)
+                                                       <tr>
+                                                           <td>{{$st->name}}</td>
+                                                           <td>{{$st->id}}</td>
+                                                           <td>{{$st->mark}}</td>
+                                                           <td>{{$st->attempt}}</td>
+                                                           <td>{{$st->updated_at}}</td>
+                                                       </tr>
+                                                   @endforeach
+                                               @endisset
+                                               </tbody>
+                                           </table>
+                                       </div>
+                                   </form>
+                               </div>
+                           @endif
+                       @endforeach
+                   @endisset
+               </div>
+               <div class="col-md-10">
+                   @isset($quizzes)
+                       <h1>Unit 5</h1>
+                       @foreach($quizzes as $quiz)
+                           @if($quiz->Unit==5)
+                               <div class="card" style="background-color: #97cbff ; padding: 10px; padding-bottom: 0px;">
+                                   <h2>{{$quiz->quiz_name}}</h2>
+
+                                   <form method="POST" action="{{ route('updateQuiz') }}" enctype="multipart/form-data">
+                                       @csrf
+                                       <div class="card-header"><strong>Create By -</strong> {{$quiz->created_by}}</div>
+                                       <div class="card-body"><strong>Create at -</strong>  {{$quiz->created_at}}</div>
+                                       <div class="row">
+                                           <div class="col-md-4">
+                                               {{--                                         <input type="text" id="myInput{{$quiz->id}}"  readonly value='/quiz/{{$quiz->url}}' >--}}
+                                               <input type="hidden" name="id" id="myInput{{$quiz->id}}"   value={{$quiz->id}} readonly>
+                                           </div>
+                                       </div>
+                                       <div class="row">
+                                           <div class="col-md-2">
+                                               @if($quiz->status=='deactivate')
+                                                   <button id="state" type="submit"  class="btn btn-primary" style="margin-bottom:15px;"  data-dismiss="modal">Activate</button>
+                                                   <input id="newState" name="newState" type="hidden" value="active">
+
+                                               @else()
+                                                   <button id="state" type="submit"  class="btn btn-primary" style="margin-bottom:15px;" data-dismiss="modal">Deactivate</button>
+                                                   <input id="newState" name="newState" type="hidden" value="deactivate">
+                                               @endif
+                                           </div>
+                                           <br/>
+                                           <div class="col-md-2">
+                                               {{--                                    <form method="get" action={{$quiz->path}}>--}}
+                                               {{--                                        <button id="download" type="button" onclick="myFunction({{$quiz->id}})" class="btn btn-primary" data-dismiss="modal">Copy Link</button>--}}
+                                               {{--                                    </form>--}}
+                                           </div>
+                                       </div>
+                                       <div>
+                                           <table id="example" class="table table-striped table-bordered" style="width:100%">
+                                               <thead>
+                                               <tr>
+                                                   <th>Student Name</th>
+                                                   <th>Student ID</th>
+                                                   <th>Attempt</th>
+                                                   <th>Marks</th>
+                                                   <th>Attempted At</th>
+                                               </tr>
+                                               </thead>
+                                               <tbody>
+                                               @isset($studnetQuiz[$loop->index])
+                                                   @foreach($studnetQuiz[$loop->index] as $st)
+                                                       <tr>
+                                                           <td>{{$st->name}}</td>
+                                                           <td>{{$st->id}}</td>
+                                                           <td>{{$st->mark}}</td>
+                                                           <td>{{$st->attempt}}</td>
+                                                           <td>{{$st->updated_at}}</td>
+                                                       </tr>
+                                                   @endforeach
+                                               @endisset
+                                               </tbody>
+                                           </table>
+                                       </div>
+                                   </form>
+                               </div>
+                           @endif
+                       @endforeach
+                   @endisset
+               </div>
+
+
+
+               <div class="col-md-10">
+                   @isset($quizzes)
+                       <h1>Unit 6</h1>
+                       @foreach($quizzes as $quiz)
+                           @if($quiz->Unit==6)
+                               <div class="card" style="background-color: #97cbff ; padding: 10px; padding-bottom: 0px;">
+                                   <h2>{{$quiz->quiz_name}}</h2>
+
+                                   <form method="POST" action="{{ route('updateQuiz') }}" enctype="multipart/form-data">
+                                       @csrf
+                                       <div class="card-header"><strong>Create By -</strong> {{$quiz->created_by}}</div>
+                                       <div class="card-body"><strong>Create at -</strong>  {{$quiz->created_at}}</div>
+                                       <div class="row">
+                                           <div class="col-md-4">
+                                               {{--                                         <input type="text" id="myInput{{$quiz->id}}"  readonly value='/quiz/{{$quiz->url}}' >--}}
+                                               <input type="hidden" name="id" id="myInput{{$quiz->id}}"   value={{$quiz->id}} readonly>
+                                           </div>
+                                       </div>
+                                       <div class="row">
+                                           <div class="col-md-2">
+                                               @if($quiz->status=='deactivate')
+                                                   <button id="state" type="submit"  class="btn btn-primary" style="margin-bottom:15px;"  data-dismiss="modal">Activate</button>
+                                                   <input id="newState" name="newState" type="hidden" value="active">
+
+                                               @else()
+                                                   <button id="state" type="submit"  class="btn btn-primary" style="margin-bottom:15px;" data-dismiss="modal">Deactivate</button>
+                                                   <input id="newState" name="newState" type="hidden" value="deactivate">
+                                               @endif
+                                           </div>
+                                           <br/>
+                                           <div class="col-md-2">
+                                               {{--                                    <form method="get" action={{$quiz->path}}>--}}
+                                               {{--                                        <button id="download" type="button" onclick="myFunction({{$quiz->id}})" class="btn btn-primary" data-dismiss="modal">Copy Link</button>--}}
+                                               {{--                                    </form>--}}
+                                           </div>
+                                       </div>
+                                       <div>
+                                           <table id="example" class="table table-striped table-bordered" style="width:100%">
+                                               <thead>
+                                               <tr>
+                                                   <th>Student Name</th>
+                                                   <th>Student ID</th>
+                                                   <th>Attempt</th>
+                                                   <th>Marks</th>
+                                                   <th>Attempted At</th>
+                                               </tr>
+                                               </thead>
+                                               <tbody>
+                                               @isset($studnetQuiz[$loop->index])
+                                                   @foreach($studnetQuiz[$loop->index] as $st)
+                                                       <tr>
+                                                           <td>{{$st->name}}</td>
+                                                           <td>{{$st->id}}</td>
+                                                           <td>{{$st->mark}}</td>
+                                                           <td>{{$st->attempt}}</td>
+                                                           <td>{{$st->updated_at}}</td>
+                                                       </tr>
+                                                   @endforeach
+                                               @endisset
+                                               </tbody>
+                                           </table>
+                                       </div>
+                                   </form>
+                               </div>
+                           @endif
+                       @endforeach
+                   @endisset
+               </div>
+
+
+               <div class="col-md-10">
+                   @isset($quizzes)
+                       <h1>Unit 7</h1>
+                       @foreach($quizzes as $quiz)
+                           @if($quiz->Unit==7)
+                               <div class="card" style="background-color: #97cbff ; padding: 10px; padding-bottom: 0px;">
+                                   <h2>{{$quiz->quiz_name}}</h2>
+
+                                   <form method="POST" action="{{ route('updateQuiz') }}" enctype="multipart/form-data">
+                                       @csrf
+                                       <div class="card-header"><strong>Create By -</strong> {{$quiz->created_by}}</div>
+                                       <div class="card-body"><strong>Create at -</strong>  {{$quiz->created_at}}</div>
+                                       <div class="row">
+                                           <div class="col-md-4">
+                                               {{--                                         <input type="text" id="myInput{{$quiz->id}}"  readonly value='/quiz/{{$quiz->url}}' >--}}
+                                               <input type="hidden" name="id" id="myInput{{$quiz->id}}"   value={{$quiz->id}} readonly>
+                                           </div>
+                                       </div>
+                                       <div class="row">
+                                           <div class="col-md-2">
+                                               @if($quiz->status=='deactivate')
+                                                   <button id="state" type="submit"  class="btn btn-primary" style="margin-bottom:15px;"  data-dismiss="modal">Activate</button>
+                                                   <input id="newState" name="newState" type="hidden" value="active">
+
+                                               @else()
+                                                   <button id="state" type="submit"  class="btn btn-primary" style="margin-bottom:15px;" data-dismiss="modal">Deactivate</button>
+                                                   <input id="newState" name="newState" type="hidden" value="deactivate">
+                                               @endif
+                                           </div>
+                                           <br/>
+                                           <div class="col-md-2">
+                                               {{--                                    <form method="get" action={{$quiz->path}}>--}}
+                                               {{--                                        <button id="download" type="button" onclick="myFunction({{$quiz->id}})" class="btn btn-primary" data-dismiss="modal">Copy Link</button>--}}
+                                               {{--                                    </form>--}}
+                                           </div>
+                                       </div>
+                                       <div>
+                                           <table id="example" class="table table-striped table-bordered" style="width:100%">
+                                               <thead>
+                                               <tr>
+                                                   <th>Student Name</th>
+                                                   <th>Student ID</th>
+                                                   <th>Attempt</th>
+                                                   <th>Marks</th>
+                                                   <th>Attempted At</th>
+                                               </tr>
+                                               </thead>
+                                               <tbody>
+                                               @isset($studnetQuiz[$loop->index])
+                                                   @foreach($studnetQuiz[$loop->index] as $st)
+                                                       <tr>
+                                                           <td>{{$st->name}}</td>
+                                                           <td>{{$st->id}}</td>
+                                                           <td>{{$st->mark}}</td>
+                                                           <td>{{$st->attempt}}</td>
+                                                           <td>{{$st->updated_at}}</td>
+                                                       </tr>
+                                                   @endforeach
+                                               @endisset
+                                               </tbody>
+                                           </table>
+                                       </div>
+                                   </form>
+                               </div>
+                           @endif
+                       @endforeach
+                   @endisset
+               </div>
+
+
+               <div class="col-md-10">
+                   @isset($quizzes)
+                       <h1>Unit 8</h1>
+                       @foreach($quizzes as $quiz)
+                           @if($quiz->Unit==8)
+                               <div class="card" style="background-color: #97cbff ; padding: 10px; padding-bottom: 0px;">
+                                   <h2>{{$quiz->quiz_name}}</h2>
+
+                                   <form method="POST" action="{{ route('updateQuiz') }}" enctype="multipart/form-data">
+                                       @csrf
+                                       <div class="card-header"><strong>Create By -</strong> {{$quiz->created_by}}</div>
+                                       <div class="card-body"><strong>Create at -</strong>  {{$quiz->created_at}}</div>
+                                       <div class="row">
+                                           <div class="col-md-4">
+                                               {{--                                         <input type="text" id="myInput{{$quiz->id}}"  readonly value='/quiz/{{$quiz->url}}' >--}}
+                                               <input type="hidden" name="id" id="myInput{{$quiz->id}}"   value={{$quiz->id}} readonly>
+                                           </div>
+                                       </div>
+                                       <div class="row">
+                                           <div class="col-md-2">
+                                               @if($quiz->status=='deactivate')
+                                                   <button id="state" type="submit"  class="btn btn-primary" style="margin-bottom:15px;"  data-dismiss="modal">Activate</button>
+                                                   <input id="newState" name="newState" type="hidden" value="active">
+
+                                               @else()
+                                                   <button id="state" type="submit"  class="btn btn-primary" style="margin-bottom:15px;" data-dismiss="modal">Deactivate</button>
+                                                   <input id="newState" name="newState" type="hidden" value="deactivate">
+                                               @endif
+                                           </div>
+                                           <br/>
+                                           <div class="col-md-2">
+                                               {{--                                    <form method="get" action={{$quiz->path}}>--}}
+                                               {{--                                        <button id="download" type="button" onclick="myFunction({{$quiz->id}})" class="btn btn-primary" data-dismiss="modal">Copy Link</button>--}}
+                                               {{--                                    </form>--}}
+                                           </div>
+                                       </div>
+                                       <div>
+                                           <table id="example" class="table table-striped table-bordered" style="width:100%">
+                                               <thead>
+                                               <tr>
+                                                   <th>Student Name</th>
+                                                   <th>Student ID</th>
+                                                   <th>Attempt</th>
+                                                   <th>Marks</th>
+                                                   <th>Attempted At</th>
+                                               </tr>
+                                               </thead>
+                                               <tbody>
+                                               @isset($studnetQuiz[$loop->index])
+                                                   @foreach($studnetQuiz[$loop->index] as $st)
+                                                       <tr>
+                                                           <td>{{$st->name}}</td>
+                                                           <td>{{$st->id}}</td>
+                                                           <td>{{$st->mark}}</td>
+                                                           <td>{{$st->attempt}}</td>
+                                                           <td>{{$st->updated_at}}</td>
+                                                       </tr>
+                                                   @endforeach
+                                               @endisset
+                                               </tbody>
+                                           </table>
+                                       </div>
+                                   </form>
+                               </div>
+                           @endif
+                       @endforeach
+                   @endisset
+               </div>
+
+               <div class="col-md-10">
+                   @isset($quizzes)
+                       <h1>Unit 9</h1>
+                       @foreach($quizzes as $quiz)
+                           @if($quiz->Unit==9)
+                               <div class="card" style="background-color: #97cbff ; padding: 10px; padding-bottom: 0px;">
+                                   <h2>{{$quiz->quiz_name}}</h2>
+
+                                   <form method="POST" action="{{ route('updateQuiz') }}" enctype="multipart/form-data">
+                                       @csrf
+                                       <div class="card-header"><strong>Create By -</strong> {{$quiz->created_by}}</div>
+                                       <div class="card-body"><strong>Create at -</strong>  {{$quiz->created_at}}</div>
+                                       <div class="row">
+                                           <div class="col-md-4">
+                                               {{--                                         <input type="text" id="myInput{{$quiz->id}}"  readonly value='/quiz/{{$quiz->url}}' >--}}
+                                               <input type="hidden" name="id" id="myInput{{$quiz->id}}"   value={{$quiz->id}} readonly>
+                                           </div>
+                                       </div>
+                                       <div class="row">
+                                           <div class="col-md-2">
+                                               @if($quiz->status=='deactivate')
+                                                   <button id="state" type="submit"  class="btn btn-primary" style="margin-bottom:15px;"  data-dismiss="modal">Activate</button>
+                                                   <input id="newState" name="newState" type="hidden" value="active">
+
+                                               @else()
+                                                   <button id="state" type="submit"  class="btn btn-primary" style="margin-bottom:15px;" data-dismiss="modal">Deactivate</button>
+                                                   <input id="newState" name="newState" type="hidden" value="deactivate">
+                                               @endif
+                                           </div>
+                                           <br/>
+                                           <div class="col-md-2">
+                                               {{--                                    <form method="get" action={{$quiz->path}}>--}}
+                                               {{--                                        <button id="download" type="button" onclick="myFunction({{$quiz->id}})" class="btn btn-primary" data-dismiss="modal">Copy Link</button>--}}
+                                               {{--                                    </form>--}}
+                                           </div>
+                                       </div>
+                                       <div>
+                                           <table id="example" class="table table-striped table-bordered" style="width:100%">
+                                               <thead>
+                                               <tr>
+                                                   <th>Student Name</th>
+                                                   <th>Student ID</th>
+                                                   <th>Attempt</th>
+                                                   <th>Marks</th>
+                                                   <th>Attempted At</th>
+                                               </tr>
+                                               </thead>
+                                               <tbody>
+                                               @isset($studnetQuiz[$loop->index])
+                                                   @foreach($studnetQuiz[$loop->index] as $st)
+                                                       <tr>
+                                                           <td>{{$st->name}}</td>
+                                                           <td>{{$st->id}}</td>
+                                                           <td>{{$st->mark}}</td>
+                                                           <td>{{$st->attempt}}</td>
+                                                           <td>{{$st->updated_at}}</td>
+                                                       </tr>
+                                                   @endforeach
+                                               @endisset
+                                               </tbody>
+                                           </table>
+                                       </div>
+                                   </form>
+                               </div>
+                           @endif
+                       @endforeach
+                   @endisset
+               </div>
+
+
+
+               <div class="col-md-10">
+                   @isset($quizzes)
+                       <h1>Unit 10</h1>
+                       @foreach($quizzes as $quiz)
+                           @if($quiz->Unit==10)
+                               <div class="card" style="background-color: #97cbff ; padding: 10px; padding-bottom: 0px;">
+                                   <h2>{{$quiz->quiz_name}}</h2>
+
+                                   <form method="POST" action="{{ route('updateQuiz') }}" enctype="multipart/form-data">
+                                       @csrf
+                                       <div class="card-header"><strong>Create By -</strong> {{$quiz->created_by}}</div>
+                                       <div class="card-body"><strong>Create at -</strong>  {{$quiz->created_at}}</div>
+                                       <div class="row">
+                                           <div class="col-md-4">
+                                               {{--                                         <input type="text" id="myInput{{$quiz->id}}"  readonly value='/quiz/{{$quiz->url}}' >--}}
+                                               <input type="hidden" name="id" id="myInput{{$quiz->id}}"   value={{$quiz->id}} readonly>
+                                           </div>
+                                       </div>
+                                       <div class="row">
+                                           <div class="col-md-2">
+                                               @if($quiz->status=='deactivate')
+                                                   <button id="state" type="submit"  class="btn btn-primary" style="margin-bottom:15px;"  data-dismiss="modal">Activate</button>
+                                                   <input id="newState" name="newState" type="hidden" value="active">
+
+                                               @else()
+                                                   <button id="state" type="submit"  class="btn btn-primary" style="margin-bottom:15px;" data-dismiss="modal">Deactivate</button>
+                                                   <input id="newState" name="newState" type="hidden" value="deactivate">
+                                               @endif
+                                           </div>
+                                           <br/>
+                                           <div class="col-md-2">
+                                               {{--                                    <form method="get" action={{$quiz->path}}>--}}
+                                               {{--                                        <button id="download" type="button" onclick="myFunction({{$quiz->id}})" class="btn btn-primary" data-dismiss="modal">Copy Link</button>--}}
+                                               {{--                                    </form>--}}
+                                           </div>
+                                       </div>
+                                       <div>
+                                           <table id="example" class="table table-striped table-bordered" style="width:100%">
+                                               <thead>
+                                               <tr>
+                                                   <th>Student Name</th>
+                                                   <th>Student ID</th>
+                                                   <th>Attempt</th>
+                                                   <th>Marks</th>
+                                                   <th>Attempted At</th>
+                                               </tr>
+                                               </thead>
+                                               <tbody>
+                                               @isset($studnetQuiz[$loop->index])
+                                                   @foreach($studnetQuiz[$loop->index] as $st)
+                                                       <tr>
+                                                           <td>{{$st->name}}</td>
+                                                           <td>{{$st->id}}</td>
+                                                           <td>{{$st->mark}}</td>
+                                                           <td>{{$st->attempt}}</td>
+                                                           <td>{{$st->updated_at}}</td>
+                                                       </tr>
+                                                   @endforeach
+                                               @endisset
+                                               </tbody>
+                                           </table>
+                                       </div>
+                                   </form>
+                               </div>
+                           @endif
+                       @endforeach
+                   @endisset
+               </div>
+
+
+               <div class="col-md-10">
+                   @isset($quizzes)
+                       <h1>Unit 11</h1>
+                       @foreach($quizzes as $quiz)
+                           @if($quiz->Unit==11)
+                               <div class="card" style="background-color: #97cbff ; padding: 10px; padding-bottom: 0px;">
+                                   <h2>{{$quiz->quiz_name}}</h2>
+
+                                   <form method="POST" action="{{ route('updateQuiz') }}" enctype="multipart/form-data">
+                                       @csrf
+                                       <div class="card-header"><strong>Create By -</strong> {{$quiz->created_by}}</div>
+                                       <div class="card-body"><strong>Create at -</strong>  {{$quiz->created_at}}</div>
+                                       <div class="row">
+                                           <div class="col-md-4">
+                                               {{--                                         <input type="text" id="myInput{{$quiz->id}}"  readonly value='/quiz/{{$quiz->url}}' >--}}
+                                               <input type="hidden" name="id" id="myInput{{$quiz->id}}"   value={{$quiz->id}} readonly>
+                                           </div>
+                                       </div>
+                                       <div class="row">
+                                           <div class="col-md-2">
+                                               @if($quiz->status=='deactivate')
+                                                   <button id="state" type="submit"  class="btn btn-primary" style="margin-bottom:15px;"  data-dismiss="modal">Activate</button>
+                                                   <input id="newState" name="newState" type="hidden" value="active">
+
+                                               @else()
+                                                   <button id="state" type="submit"  class="btn btn-primary" style="margin-bottom:15px;" data-dismiss="modal">Deactivate</button>
+                                                   <input id="newState" name="newState" type="hidden" value="deactivate">
+                                               @endif
+                                           </div>
+                                           <br/>
+                                           <div class="col-md-2">
+                                               {{--                                    <form method="get" action={{$quiz->path}}>--}}
+                                               {{--                                        <button id="download" type="button" onclick="myFunction({{$quiz->id}})" class="btn btn-primary" data-dismiss="modal">Copy Link</button>--}}
+                                               {{--                                    </form>--}}
+                                           </div>
+                                       </div>
+                                       <div>
+                                           <table id="example" class="table table-striped table-bordered" style="width:100%">
+                                               <thead>
+                                               <tr>
+                                                   <th>Student Name</th>
+                                                   <th>Student ID</th>
+                                                   <th>Attempt</th>
+                                                   <th>Marks</th>
+                                                   <th>Attempted At</th>
+                                               </tr>
+                                               </thead>
+                                               <tbody>
+                                               @isset($studnetQuiz[$loop->index])
+                                                   @foreach($studnetQuiz[$loop->index] as $st)
+                                                       <tr>
+                                                           <td>{{$st->name}}</td>
+                                                           <td>{{$st->id}}</td>
+                                                           <td>{{$st->mark}}</td>
+                                                           <td>{{$st->attempt}}</td>
+                                                           <td>{{$st->updated_at}}</td>
+                                                       </tr>
+                                                   @endforeach
+                                               @endisset
+                                               </tbody>
+                                           </table>
+                                       </div>
+                                   </form>
+                               </div>
+                           @endif
+                       @endforeach
+                   @endisset
+               </div>
+
+
+               <div class="col-md-10">
+                   @isset($quizzes)
+                       <h1>Unit 12</h1>
+                       @foreach($quizzes as $quiz)
+                           @if($quiz->Unit==12)
+                               <div class="card" style="background-color: #97cbff ; padding: 10px; padding-bottom: 0px;">
+                                   <h2>{{$quiz->quiz_name}}</h2>
+
+                                   <form method="POST" action="{{ route('updateQuiz') }}" enctype="multipart/form-data">
+                                       @csrf
+                                       <div class="card-header"><strong>Create By -</strong> {{$quiz->created_by}}</div>
+                                       <div class="card-body"><strong>Create at -</strong>  {{$quiz->created_at}}</div>
+                                       <div class="row">
+                                           <div class="col-md-4">
+                                               {{--                                         <input type="text" id="myInput{{$quiz->id}}"  readonly value='/quiz/{{$quiz->url}}' >--}}
+                                               <input type="hidden" name="id" id="myInput{{$quiz->id}}"   value={{$quiz->id}} readonly>
+                                           </div>
+                                       </div>
+                                       <div class="row">
+                                           <div class="col-md-2">
+                                               @if($quiz->status=='deactivate')
+                                                   <button id="state" type="submit"  class="btn btn-primary" style="margin-bottom:15px;"  data-dismiss="modal">Activate</button>
+                                                   <input id="newState" name="newState" type="hidden" value="active">
+
+                                               @else()
+                                                   <button id="state" type="submit"  class="btn btn-primary" style="margin-bottom:15px;" data-dismiss="modal">Deactivate</button>
+                                                   <input id="newState" name="newState" type="hidden" value="deactivate">
+                                               @endif
+                                           </div>
+                                           <br/>
+                                           <div class="col-md-2">
+                                               {{--                                    <form method="get" action={{$quiz->path}}>--}}
+                                               {{--                                        <button id="download" type="button" onclick="myFunction({{$quiz->id}})" class="btn btn-primary" data-dismiss="modal">Copy Link</button>--}}
+                                               {{--                                    </form>--}}
+                                           </div>
+                                       </div>
+                                       <div>
+                                           <table id="example" class="table table-striped table-bordered" style="width:100%">
+                                               <thead>
+                                               <tr>
+                                                   <th>Student Name</th>
+                                                   <th>Student ID</th>
+                                                   <th>Attempt</th>
+                                                   <th>Marks</th>
+                                                   <th>Attempted At</th>
+                                               </tr>
+                                               </thead>
+                                               <tbody>
+                                               @isset($studnetQuiz[$loop->index])
+                                                   @foreach($studnetQuiz[$loop->index] as $st)
+                                                       <tr>
+                                                           <td>{{$st->name}}</td>
+                                                           <td>{{$st->id}}</td>
+                                                           <td>{{$st->mark}}</td>
+                                                           <td>{{$st->attempt}}</td>
+                                                           <td>{{$st->updated_at}}</td>
+                                                       </tr>
+                                                   @endforeach
+                                               @endisset
+                                               </tbody>
+                                           </table>
+                                       </div>
+                                   </form>
+                               </div>
+                           @endif
+                       @endforeach
+                   @endisset
+               </div>
+
+
+
+
             </div>
         </div>
     <div class="modal fade" id="user-registered-modal">

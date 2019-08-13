@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Slot_Requests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class StudentController extends Controller
@@ -45,6 +46,7 @@ class StudentController extends Controller
     public function viewTimeSlotRequests(Request $request){
         //
         $new_requests = Slot_Requests::where('status', '=', "active")->get();
+        $new_requests=DB::table('slot__requests')->join('users','users.id','user_id')->where('status', '=', "active")->select('slot__requests.id','slot__requests.created_at','user_id','status','reason','users.name','users.email')->get();
         return view('auth.ViewSlotRequests')->with('requests',$new_requests);
     }
     public function markasread(Request $request){

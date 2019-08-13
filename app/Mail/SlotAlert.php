@@ -20,9 +20,9 @@ class SlotAlert extends Mailable
     public function __construct($date,$start_time,$end_time,$duration)
     {
         //
-        $this->date = date;
+        $this->date = $date;
         $this->start_time = $start_time;
-        $this->end_time = $start_time;
+        $this->end_time = $end_time;
         $this->duration = $duration;
     }
 
@@ -33,6 +33,6 @@ class SlotAlert extends Mailable
      */
     public function build()
     {
-        return $this->markdown('email.notification.slotalert',['date'=> $this->date,'time'=>$this->time,'duration'=>$this->duration ]);
+        return $this->from('admin@elearning.lk')->subject('New Live Session')->markdown('email.notification.slotalert',['date'=> $this->date,'start_time'=>$this->start_time,'end_time'=>$this->end_time,'duration'=>$this->duration ]);
     }
 }

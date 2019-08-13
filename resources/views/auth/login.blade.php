@@ -69,5 +69,9 @@
             </div>
         </div>
     </div>
+    <div class="row justify-content-center">
+        <body background="/images/background.png" style="background-size: 1045px"></body>
+{{--        <img src="/images/background.png" style="width: 50px; height: 50px">--}}
+    </div>
 </div>
 @endsection

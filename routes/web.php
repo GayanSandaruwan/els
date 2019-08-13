@@ -53,6 +53,11 @@ Route::middleware(['auth','admin'])->group(function () {
     Route::get('/admin/addTeacher', 'Auth\RegisterController@getAddTeacherForm')->name('addTeacherForm');
     Route::post('/admin/addTeacher','Auth\RegisterController@registerTeacher')->name('addTeacher');
 
+    Route::get('/admin/editTeacher/modify', 'Auth\AdminController@geteditDeleteTeacherForm')->name('geteditDeleteTeacherForm');
+    Route::post('/admin/editTeacherForm','Auth\AdminController@editTeacherForm')->name('editTeacherForm');
+    Route::post('/admin/editTeacher', 'Auth\AdminController@editTeacher')->name('editTeacher');
+//    Route::post('/admin/editTeacher','Auth\AdminController@editTeacherForm')->name('editTeacherForm');
+
     Route::get('/admin/addStudent', 'Auth\RegisterController@getAddStudentForm')->name('addStudentForm');
     Route::post('/admin/addStudent','Auth\RegisterController@registerStudent')->name('addStudent');
 
@@ -67,6 +72,9 @@ Route::middleware(['auth','admin'])->group(function () {
     //view timeslot requests
     Route::get('/admin/viewTimeSlotRequests', 'Auth\StudentController@viewTimeSlotRequests')->name('viewTimeSlotRequests');
 
+    Route::get('/admin/editTeacher', 'Auth\AdminController@editTeacher')->name('editTeacher');
+    Route::get('/admin/editStudent', 'Auth\AdminController@editStudent')->name('edutStudent');
+
 
 
 });
@@ -77,9 +85,20 @@ Route::middleware(['auth','teacher'])->group(function (){
 
     Route::get('/teacher/quizController', 'QuizController@getUploadQuiz')->name('uploadQuiz');
     Route::post('/teacher/quizController', 'QuizController@uploadQuiz')->name('uploadQuiz');
+    //from chat
+    Route::post('/uploadQuizApi ', 'QuizController@uploadQuizChat')->name('uploadQuizChat');
+
 
     Route::get('/teacher/uploadAssignment', 'QuizController@getUploadAss')->name('uploadAss');
     Route::post('/teacher/uploadAssignment', 'QuizController@uploadAss')->name('uploadAss');
+
+    //lessons
+    //upload lessons
+    Route::get('/teacher/uploadLessons', 'QuizController@getUploadLesson')->name('uploadLesson');
+    Route::post('/teacher/uploadLessons', 'QuizController@uploadLesson')->name('uploadLesson');
+    Route::get('/teacher/viewLessons', 'QuizController@viewLessons')->name('viewLessons');
+
+
     Route::get('/teacher/viewAssignment', 'QuizController@viewAssignment')->name('viewAssignment');
 //    Route::post('/teacher/uploadAssignment', 'QuizController@uploadAss')->name('uploadAss');
 
@@ -91,11 +110,13 @@ Route::middleware(['auth','teacher'])->group(function (){
 
     Route::get('/teacher/viewmyslots', 'SlotRequestsController@viewmyslots')->name('viewmyslots');
     //get teachers session
-    Route::get('/teacher/myslot/{id}', 'SlotRequestsController@teacherMySlot')->name('teacherMySlot');
+        Route::get('/teacher/myslot/{id}', 'SlotRequestsController@teacherMySlot')->name('teacherMySlot');
     //creating a new conversation
     Route::post('/teacher/createConv', 'ConversationsController@createConv')->name('createConv');
     //getting an existing chat
     Route::get('/teacher/getConv/{id}', 'ConversationsController@getConv')->name('getConv');
+
+
 });
 
 Route::middleware(['auth','parent'])->group(function (){
@@ -104,12 +125,19 @@ Route::middleware(['auth','parent'])->group(function (){
     Route::post('/parent/addComment', 'Auth\ParentController@addComment')->name('comment');
 });
 Route::middleware(['auth'])->group(function (){
-
 //    Route::get('/student/viewQuizes','Auth\StudentController@viewQuiz')->name('viewQuizes');
     Route::get('/student/viewQuizes','QuizController@studentViewQuizzes')->name('viewQuizes');
+    Route::get('/student/viewLiveQuizes','QuizController@studentViewLiveQuizzes')->name('viewLiveQuizzes');
 //    Route::get('/viewMyQuizzes', 'QuizController@studentViewQuizzes')->name('viewMyQuizzes');
+
     Route::get('/student/quiz/{id}', 'QuizController@viewQuiz')->where('id', '(.*)');
     Route::post('/student/submitQuiz', 'QuizController@submitQuiz')->name('submitQuiz');
+
+    Route::get('/student/livequiz/{id}', 'QuizController@viewLiveQuiz')->where('id', '(.*)');
+    Route::post('/student/submitQuiz', 'QuizController@submitLiveQuiz')->name('submitQuiz');
+
+
+
     //send
     Route::get('/test1', 'QuizController@test')->name('test1');
 

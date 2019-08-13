@@ -27,6 +27,32 @@
                     <div class="card-body">
                         <form method="POST" action="{{ route('uploadQuiz') }}" enctype="multipart/form-data">
                             @csrf
+                            <div class="form-group row">
+                                <label for="dob" class="col-md-4 col-form-label text-md-right">{{ __('Unit') }}</label>
+
+                                <div class="col-md-6">
+                                    <select id="unit" name="unit" data-placeholder="Select a student" class="selectpicker"  data-live-search="true" required>
+                                        <option value=1>Unit 1</option>
+                                        <option value=2>Unit 2</option>
+                                        <option value=3>Unit 3</option>
+                                        <option value=4>Unit 4</option>
+                                        <option value=5>Unit 5</option>
+                                        <option value=6>Unit 6</option>
+                                        <option value=7>Unit 7</option>
+                                        <option value=8>Unit 8</option>
+                                        <option value=9>Unit 9</option>
+                                        <option value=10>Unit 10</option>
+                                        <option value=11>Unit 11</option>
+                                        <option value=12>Unit 12</option>
+                                        <option value=13>Unit 13</option>
+                                    </select>
+                                    @error('date')
+                                    <span class="help-block" style="color: red" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
 
                             <div class="form-group row">
                                 <label for="dob" class="col-md-4 col-form-label text-md-right">{{ __('Quiz Name') }}</label>
@@ -128,7 +154,7 @@
                     <h4 class="modal-title text-center">Couldn't upload!</h4>
                 </div>
                 <div class="modal-body">
-                    <img src="/images/error" class="center-block" style="width: 100px">
+                    <img src="/images/error.png" class="center-block" style="width: 100px">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>

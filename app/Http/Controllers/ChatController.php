@@ -27,7 +27,7 @@ class ChatController extends Controller
             'user_id'=>Auth::user()->id,
             'text'=>$data['message']
         ]);
-        event(new MyEvent( Auth::user()->name,$data['message'],$chat->created_at,'my-channel'));
+        event(new MyEvent( Auth::user()->name,$data['message'],'my-channel'));
         return "Event has been sent!";
     }
 }

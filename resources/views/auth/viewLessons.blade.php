@@ -1,16 +1,16 @@
 @extends('layouts.admin-lite')
 @section('title')
-    View Assignments
+    View Lessons
 @endsection
 @section('page-header')
-    View Assignments
+    View Lessons
 @endsection
 @section('optional-header')
 @endsection
 @section('level')
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Student</a></li>
-        <li class="active">Assignment</li>
+        <li class="active">Lessons</li>
     </ol>
 @endsection
 @section('content')
