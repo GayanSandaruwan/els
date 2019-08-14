@@ -189,22 +189,55 @@ class AdminController extends Controller
         $request->session()->put('teacher',$teacher);
         return view('auth.editeacher')->with('teacher',$teacher_details)->with('saved',True);
     }
-    public function geteditTeacher(Request $request){
+    public function geteditDeleteStudentForm(Request $request){
+        $students = DB::table('users')->join('students','users.id','=','students.user_id')
+            ->where('statuss','=','active')->select('users.email','users.name','users.id')->get();
+
+        return view('auth.editDeleteStudentForm')->with('students',$students);
 
     }
-    public function geteditStudents(Request $request){
+    public function editStudentForm(Request $request){
+        $data=$request->all();
+        $student=$data['student'];
+        $request->session()->put('student',$student);
+        error_log( $request->session()->get('student')." dddddddddddddfd");
+        $user=User::where('id','=',$student)->get()[0];
+        $change=$data['change'];
+        if($change=='edit'){
+            $student_details = DB::table('users')->join('students','users.id','=','students.user_id')
+                ->where('statuss','=','active')->where('user_id','=',$student)->get()[0];
 
-    }
-    public function editStudents(Request $request){
+
+            return view('auth.editstudent')->with('student',$student_details);
+        }
+        if($change=='delete'){
+            $user->statuss='inactive';
+            $user->save();
+            return $this->geteditDeleteStudentForm($request)->with('edited',True);
+        }
+
+
 
     }
     public function editStudent(Request $request){
+//        var_dump(session());
+        $studentId= $request->session()->get('student');
+//        error_log($studentId." Teacher ID");
+        $student=Student::where('user_id','=',$studentId)->get()[0];
+        $data=$request->all();
 
+        $student->grade= $data['grade'];
+        $student->address= $data['address'];
+        $student->contact= $data['contact'];
+        $student->dob=date('Y-m-d',strtotime($data['dob']));
+        $student->save();
+
+        $student_details = DB::table('users')->join('students','users.id','=','students.user_id')
+            ->where('statuss','=','active')->where('user_id','=',$studentId)->get()[0];
+
+        $request->session()->put('student',$student);
+        return view('auth.editStudent')->with('student',$student_details)->with('saved',True);
     }
-    public function geteditStudent(Request $request){
-
-    }
-
 
 
 

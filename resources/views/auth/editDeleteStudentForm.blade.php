@@ -1,9 +1,9 @@
 @extends('layouts.admin-lite')
 @section('title')
-    Edit Teachers
+    Edit Student
 @endsection
 @section('page-header')
-    Edit Teachers
+    Edit Student
 
 @endsection
 @section('optional-header')
@@ -11,7 +11,7 @@
 @section('level')
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Admin</a></li>
-        <li class="active">Edit Teachers</li>
+        <li class="active">Edit Student</li>
     </ol>
 @endsection
 @section('content')
@@ -23,17 +23,17 @@
                         <div class="card-header" style="color: green; font-size: large">Successfully Added {{$new_user->email }}</div>
                     @endisset
                     <div class="card-body">
-                        <form method="POST" action="{{ route('editTeacherForm') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('editStudentForm') }}" enctype="multipart/form-data">
                             @csrf
 
                                     <div class="form-group row">
-                                        <label for="student_id" class="col-md-4 col-form-label text-md-right">{{ __('Select Teacher') }}</label>
-                                        @isset($teachers)
+                                        <label for="student_id" class="col-md-4 col-form-label text-md-right">{{ __('Select Student') }}</label>
+                                        @isset($students)
                                             <div class="col-md-6">
-                                                <select id="teacher" name="teacher" class="form-control select2"  required data-placeholder="Select a Student"
+                                                <select id="student" name="student" class="form-control select2"  required data-placeholder="Select a Student"
                                                         style="width: 100%;">
-                                                    @foreach($teachers as $teacher)
-                                                        <option value="{{$teacher->id}}">{{$teacher->name}} - {{$teacher->email}}</option>
+                                                    @foreach($students as $student)
+                                                        <option value="{{$student->id}}">{{$student->name}} - {{$student->email}}</option>
                                                     @endforeach
                                                 </select>
                                                 @error('student_id')
@@ -79,7 +79,7 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title text-center">Successfully Deleted the Teacher</h4>
+                    <h4 class="modal-title text-center">Successfully Deleted the Student</h4>
                 </div>
                 <div class="modal-body">
                     <img src="/images/success.png" class="center-block" style="width: 100px">

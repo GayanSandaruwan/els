@@ -40,6 +40,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Google Font -->
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <style>
+        .cont-shadow{
+            background-image: url('/images/resize.png');
+            background-repeat: repeat-y; /* for vertical repeat */
+            background-repeat: repeat-x; /* for horizontal repeat */
+            height:500px;
+        }
+    </style>
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -193,30 +201,41 @@ desired effect
                 <li class="treeview">
                     <a href="#"><i class="fa fa-gears"></i> <span>Account</span>
                         <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        {{--<li><a href="{{route('updatePasswordForm')}}"><i class="fa fa-user-secret"></i> <span>Change Password</span> </a></li>--}}
-                        {{--<li><a href="{{route('updateAccountForm')}}"><i class="fa fa-pencil"> </i> <span>Update Account</span></a></li>--}}
-                        <li><a href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                <i class="fa fa-power-off"> </i> <span>Logout</span>
-                                </a>
+                        <i class="fa fa-angle-left pull-right"></i>
+                      </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                {{--<li><a href="{{route('updatePasswordForm')}}"><i class="fa fa-user-secret"></i> <span>Change Password</span> </a></li>--}}
+                                {{--<li><a href="{{route('updateAccountForm')}}"><i class="fa fa-pencil"> </i> <span>Update Account</span></a></li>--}}
+                                <li><a href="{{ route('logout') }}"
+                                           onclick="event.preventDefault();
+                                                             document.getElementById('logout-form').submit();">
+                                        <i class="fa fa-power-off"> </i> <span>Logout</span>
+                                        </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-                        </li>
-                    </ul>
-                </li>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+                                </li>
+                            </ul>
+                     </li>
             @if(Auth::user()->type == 'admin')
-                    <li><a href="{{route('addTeacherForm')}}"><i class="fa fa-plus"></i> <span>Register Teacher</span></a></li>
-                    <li><a href="{{route('geteditDeleteTeacherForm')}}"><i class="fa fa-plus"></i> <span>Edit Teacher</span></a></li>
-                    <li><a href="{{route('addStudentForm')}}"><i class="fa fa-plus"></i> <span>Register Student</span></a></li>
-                    <li><a href="{{route('addParentForm')}}"><i class="fa fa-plus"></i> <span>Register Parent</span></a></li>
-                    <li><a href="{{route('studentToParentForm')}}"><i class="fa fa-plus"></i> <span>Assign Student to Parent</span></a></li>
+                    <li class="treeview">
+                        <a href="#"><i class="fa fa-user"></i> <span>Users</span>
+                            <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                      </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="{{route('addTeacherForm')}}"><i class="fa fa-plus"></i> <span>Register Teacher</span></a></li>
+                            <li><a href="{{route('geteditDeleteTeacherForm')}}"><i class="fa fa-edit"></i> <span>Edit Teacher</span></a></li>
+                            <li><a href="{{route('addStudentForm')}}"><i class="fa fa-plus"></i> <span>Register Student</span></a></li>
+                            <li><a href="{{route('geteditDeleteStudentForm')}}"><i class="fa fa-edit"></i> <span>Edit Student</span></a></li>
+                            <li><a href="{{route('addParentForm')}}"><i class="fa fa-edit"></i> <span>Register Parent</span></a></li>
+                            <li><a href="{{route('studentToParentForm')}}"><i class="fa fa-plus"></i> <span>Assign Student to Parent</span></a></li>
+
+                        </ul>
+                    </li>
                     <li><a href="{{route('addTimeSlotForm')}}"><i class="fa fa-plus"></i> <span>Create a Live Session</span></a></li>
                     <li><a href="{{route('studentToSlot')}}"><i class="fa fa-plus"></i> <span>Assign Academics</span></a></li>
                     <li><a href="{{route('viewTimeSlotRequests')}}"><i class="fa fa-eye"></i> <span>View Requests</span></a></li>
@@ -268,7 +287,7 @@ desired effect
         </section>
 
         <!-- Main content -->
-        <section class="content container-fluid">
+        <section class="content container-fluid container-fluid cont-shadow">
 
             <!--------------------------
               | Your Page Content Here |

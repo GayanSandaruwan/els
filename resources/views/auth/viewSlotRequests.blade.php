@@ -3,14 +3,14 @@
     viewTimeSlotRequests
 @endsection
 @section('page-header')
-    View Slot Requests
+    View Virtual Class Requests.
 @endsection
 @section('optional-header')
 @endsection
 @section('level')
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Teacher</a></li>
-        <li class="active">View Slot Requests</li>
+        <li class="active"> View Virtual Class Requests. </li>
     </ol>
 @endsection
 @section('content')

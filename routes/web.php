@@ -58,6 +58,10 @@ Route::middleware(['auth','admin'])->group(function () {
     Route::post('/admin/editTeacher', 'Auth\AdminController@editTeacher')->name('editTeacher');
 //    Route::post('/admin/editTeacher','Auth\AdminController@editTeacherForm')->name('editTeacherForm');
 
+    Route::get('/admin/editStudent/modify', 'Auth\AdminController@geteditDeleteStudentForm')->name('geteditDeleteStudentForm');
+    Route::post('/admin/editStudentForm','Auth\AdminController@editStudentForm')->name('editStudentForm');
+    Route::post('/admin/editStudent', 'Auth\AdminController@editStudent')->name('editStudent');
+
     Route::get('/admin/addStudent', 'Auth\RegisterController@getAddStudentForm')->name('addStudentForm');
     Route::post('/admin/addStudent','Auth\RegisterController@registerStudent')->name('addStudent');
 
