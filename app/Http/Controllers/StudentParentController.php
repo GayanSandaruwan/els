@@ -25,7 +25,8 @@ class StudentParentController extends Controller
     protected function createStudentParentRelation(array $data)
     {
 //        var_dump($user);
-        $stuPar=StudentParent::where('student_id','=',$data['student_id'])->where('parent_id','=',$data['parent_id'])->get()[0];
+        $stuPar=StudentParent::where('student_id','=',$data['student_id'])->where('parent_id','=',$data['parent_id'])->first();
+//        if($stuPar)
 
         if($stuPar){
             error_log("There is one");

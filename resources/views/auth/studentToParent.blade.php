@@ -23,7 +23,7 @@
                             @csrf
 
                             <div class="form-group row">
-                                <label for="parent_id" class="col-md-4 col-form-label text-md-right">{{ __('Parentc') }}</label>
+                                <label for="parent_id" class="col-md-4 col-form-label text-md-right">{{ __('Parent') }}</label>
 
                                 <div class="col-md-6">
                                     <select id="parent_id" name="parent_id" class="form-control select2"  data-placeholder="Select a Parent"

@@ -162,6 +162,8 @@ Route::middleware(['auth'])->group(function (){
     Route::get('/teacher/getConv/{id}', 'ConversationsController@getConv')->name('getConv');
     //view assignments
     Route::get('/teacher/viewAssignment', 'QuizController@viewAssignment')->name('viewAssignment');
+    Route::get('/teacher/viewLessons', 'QuizController@viewLessons')->name('viewLessons');
+
 
 });
 

@@ -245,7 +245,6 @@ desired effect
 
                     {{--<li><a href="{{route('viewUserForm')}}"><i class="fa fa-eye-slash"></i> <span>View Users</span></a></li>--}}
             @elseif(Auth::user()->type == 'teacher')
-                <li><a href="{{route('studentToParentForm')}}"><i class="fa fa-plus"></i> <span>Assign Student to Parent</span></a></li>
                     <li><a href="{{route('uploadQuiz')}}"><i class="fa fa-plus"></i> <span>Upload Quiz</span></a></li>
                     <li><a href="{{route('uploadAss')}}"><i class="fa fa-plus"></i> <span>Upload Assignment</span></a></li>
                     <li><a href="{{route('uploadLesson')}}"><i class="fa fa-eye"></i> <span>Upload Lessons</span></a></li>
