@@ -96,7 +96,14 @@ class SlotRequestsController extends Controller
         //get all the active conversations for the bugger
         $conversations= DB::table('conversations')->join('conver_users','conver_users.conver_id','=','conversations.id')->where('conver_users.user_id','=',Auth::user()->id)->where('conversations.status','=','active')->where('slot_id','=',$id)->select('conversations.id','conversations.type')->get();
         error_log( 'cons are'.sizeof($conversations));
-        return  view('auth.mySlot')->with('conver',$conversations)->with('slot_id',$id);
+
+//        $quizResults=[];
+//        foreach ($conversations as $con){
+//            $studentQuiz=DB::table('student_quizzes')->join('users','users.id','student_quizzes.student_id')->where('student_quizzes.quiz_id','=',$con->quiz_id)->where('users.type','=','student')->where('users.id','=',Auth::user()->id)->first();
+////            $studentQuiz->name=User::where('user_id','=',$studentQuiz->id);
+//            array_push($quizResults,$studentQuiz);
+//        }
+        return  view('auth.mySlot')->with('conver',$conversations)->with('slot_id',$id); //->with('stud',True)->with('marks',$quizResults);
     }
 
 //DB::table('conversations')->join('conver_users','conver_users.conver_id','=','conversations.conver_id')->where('conver_users.user_id','=',9)->where('conversations.slot_id','=',1)->get();

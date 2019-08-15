@@ -100,6 +100,34 @@ Create Sessions
                                         </tbody>
                                     </table>
                                         @endisset
+
+
+                                    @isset($stud)
+                                        <table id="example" class="table table-striped table-bordered" style="width:100%">
+                                            <thead>
+                                            <tr>
+                                                <th>Student Name</th>
+                                                <th>Student ID</th>
+                                                <th>Attempt</th>
+                                                <th>Marks</th>
+                                                <th>Attempted At</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @isset($marks[$loop->index])
+                                                @foreach($marks[$loop->index] as $st)
+                                                    <tr>
+                                                        <td>{{$st->name}}</td>
+                                                        <td>{{$st->id}}</td>
+                                                        <td>{{$st->attempt}}</td>
+                                                        <td>{{$st->mark}}</td>
+                                                        <td>{{$st->created_at}}</td>
+                                                    </tr>
+                                                @endforeach
+                                            @endisset
+                                            </tbody>
+                                        </table>
+                                    @endisset
                                 </div>
                             </form>
                         </div>

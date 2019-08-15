@@ -312,7 +312,7 @@ class QuizController extends Controller
 //            return Storage::download($ass['path']);
         }
 
-        return view('auth.viewAssignments')->with('assignments', $assignments);
+        return view('auth.viewAssignments')->with('assignments', $assignments)->with('type',Auth::user()->type);
 
     }
     public function viewLessons(Request $request)

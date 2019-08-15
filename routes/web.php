@@ -140,8 +140,6 @@ Route::middleware(['auth'])->group(function (){
     Route::get('/student/livequiz/{id}', 'QuizController@viewLiveQuiz')->where('id', '(.*)');
     Route::post('/student/submitQuiz', 'QuizController@submitLiveQuiz')->name('submitQuiz');
 
-
-
     //send
     Route::get('/test1', 'QuizController@test')->name('test1');
 
