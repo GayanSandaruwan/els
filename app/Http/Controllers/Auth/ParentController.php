@@ -16,7 +16,8 @@ class ParentController extends Controller
 
    public function getChildren(){
        $parent_id=Parentc::where('user_id','=',Auth::user()->id)->get()[0]->id;
-       $children=DB::table('student_parents')->select('name','users.id')->join('users','users.id','student_parents.student_id')-> where('parent_id','=',$parent_id)->get();
+       $children=DB::table('student_parents')->select('name','users.id')->join('students','students.id','student_parents.student_id')-> where('parent_id','=',$parent_id)->join('users','users.id','user_id')->get();
+
 
 //       error_log(Auth::user()->id);
        return view('auth.viewMyChildren')->with('children',$children);

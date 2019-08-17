@@ -69,7 +69,7 @@
                                         <select id="teacher" name="teacher" class="form-control select2"  required data-placeholder="Select a Student"
                                                 style="width: 100%;">
                                             @foreach($teachers as $teacher)
-                                                <option value="{{$teacher->id}}">{{$teacher->name}}</option>
+                                                <option value="{{$teacher->id}}">{{$teacher->name}} - {{$teacher->specialization}} [{{$teacher->prof_qual}}]</option>
                                             @endforeach
                                         </select>
                                         @error('student_id')

@@ -100,7 +100,7 @@ class AdminController extends Controller
         //getting the active timeslots
         $timeslots = TimeSlot::where('status', '=', 'active')->get();
         $teachers = DB::table('users')->join('teachers','users.id','=','teachers.user_id')
-            ->where('statuss','=','active')->select('users.email','users.name','users.id')->get();
+            ->where('statuss','=','active')->get();
 
         return view('auth.addToTimeSlot')->with('students',$students)->with('slots',$timeslots)->with('teachers',$teachers);
     }
