@@ -9,7 +9,7 @@
 @endsection
 @section('level')
     <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Student</a></li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> Admin</a></li>
         <li class="active"> View Virtual Class Requests. </li>
     </ol>
 @endsection

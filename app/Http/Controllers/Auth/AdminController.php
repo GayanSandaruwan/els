@@ -112,10 +112,12 @@ class AdminController extends Controller
 
         foreach ($students as $student){
             $values=explode("-",$student);
+
             Slot_Student::create([
                     'student_id'=>$values[0],
-                    'slot_id'=>$request['slot']
+                    'slot_id'=>$data['slot']
             ]);
+
             $request=Slot_Requests::where('id','=',$values[1])->get()[0];
             $request->status='read';
             $request->save();

@@ -239,7 +239,7 @@ desired effect
                     <li><a href="{{route('addTimeSlotForm')}}"><i class="fa fa-plus"></i> <span>Create a Live Session</span></a></li>
                     <li><a href="{{route('studentToSlot')}}"><i class="fa fa-plus"></i> <span>Assign Academics</span></a></li>
                     <li><a href="{{route('viewTimeSlotRequests')}}"><i class="fa fa-eye"></i> <span>View Requests</span></a></li>
-                    <li><a href="{{route('viewLessons')}}"><i class="fa fa-eye"></i> <span>View Lessons</span></a></li>
+                    <li><a href="{{route('adminviewLessons')}}"><i class="fa fa-eye"></i> <span>View Lessons</span></a></li>
 {{--                    <li><a href="{{route('editTeacher')}}"><i class="fa fa-eye"></i> <span>Edit Teacher</span></a></li>--}}
 {{--                    <li><a href="{{route('editStudent')}}"><i class="fa fa-eye"></i> <span>View Student</span></a></li>--}}
 
@@ -248,9 +248,9 @@ desired effect
                     <li><a href="{{route('uploadQuiz')}}"><i class="fa fa-plus"></i> <span>Upload Quiz</span></a></li>
                     <li><a href="{{route('uploadAss')}}"><i class="fa fa-plus"></i> <span>Upload Assignment</span></a></li>
                     <li><a href="{{route('uploadLesson')}}"><i class="fa fa-eye"></i> <span>Upload Lessons</span></a></li>
-                    <li><a href="{{route('viewAssignment')}}"><i class="fa fa-eye"></i> <span>View Assignment</span></a></li>
+                    <li><a href="{{route('teacherviewAssignment')}}"><i class="fa fa-eye"></i> <span>View Assignment</span></a></li>
                     <li><a href="{{route('viewQuizzes')}}"><i class="fa fa-eye"></i> <span>View Quizzes</span></a></li>
-                    <li><a href="{{route('viewLessons')}}"><i class="fa fa-eye"></i> <span>View Lessons</span></a></li>
+                    <li><a href="{{route('teacherviewLessons')}}"><i class="fa fa-eye"></i> <span>View Lessons</span></a></li>
                     <li><a href="{{route('viewmyslots')}}"><i class="fa fa-eye"></i> <span>View My Live Sessions</span></a></li>
 
                     {{--                @endif--}}

@@ -101,16 +101,18 @@ Route::middleware(['auth','teacher'])->group(function (){
     Route::get('/teacher/uploadLessons', 'QuizController@getUploadLesson')->name('uploadLesson');
     Route::post('/teacher/uploadLessons', 'QuizController@uploadLesson')->name('uploadLesson');
     Route::get('/teacher/viewLessons', 'QuizController@viewLessons')->name('viewLessons');
+    Route::get('/teacher/viewLessons', 'QuizController@viewLessons')->name('teacherviewLessons');
+    Route::get('/admin/viewLessons', 'QuizController@adminviewLessons')->name('adminviewLessons');
 
 
-    Route::get('/teacher/viewAssignment', 'QuizController@viewAssignment')->name('viewAssignment');
+    Route::get('/teacher/viewAssignment', 'QuizController@teacherviewAssignment')->name('teacherviewAssignment');
 //    Route::post('/teacher/uploadAssignment', 'QuizController@uploadAss')->name('uploadAss');
 
     Route::get('/teacher/viewQuizzes', 'QuizController@viewQuizzes')->name('viewQuizzes');
     Route::post('/teacher/updatwQuiz', 'QuizController@updateQuiz')->name('updateQuiz');
 
 
-    Route::post('/teacher/markasread', 'Auth\StudentController@markasread')->name('markasread');
+    Route::post('/admin/markasread', 'Auth\StudentController@markasread')->name('markasread');
 
     Route::get('/teacher/viewmyslots', 'SlotRequestsController@viewmyslots')->name('viewmyslots');
     //get teachers session

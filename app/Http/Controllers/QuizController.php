@@ -315,6 +315,19 @@ class QuizController extends Controller
         return view('auth.viewAssignments')->with('assignments', $assignments)->with('type',Auth::user()->type);
 
     }
+    public function teacherviewAssignment(Request $request)
+    {
+        $assignments = Quiz::where('status', '=', "active")->where('type', '=', "assignment")->get();
+        error_log(count($assignments) . "This is the damn id");
+        //changing to real file path
+        foreach ($assignments as $ass) {
+            $ass['path'] = Storage::url($ass['path']);
+//            return Storage::download($ass['path']);
+        }
+
+        return view('auth.teacherviewAssignments')->with('assignments', $assignments)->with('type',Auth::user()->type);
+
+    }
     public function viewLessons(Request $request)
     {
         $assignments = Quiz::where('status', '=', "active")->where('type', '=', "lessons")->get();
@@ -326,6 +339,32 @@ class QuizController extends Controller
         }
 
         return view('auth.viewLessons')->with('assignments', $assignments);
+
+    }
+    public function adminviewLessons(Request $request)
+    {
+        $assignments = Quiz::where('status', '=', "active")->where('type', '=', "lessons")->get();
+        error_log(count($assignments) . "This is the damn id");
+        //changing to real file path
+        foreach ($assignments as $ass) {
+            $ass['path'] = Storage::url($ass['path']);
+//            return Storage::download($ass['path']);
+        }
+
+        return view('auth.AdminviewLessons')->with('assignments', $assignments);
+
+    }
+    public function teacherviewLessons(Request $request)
+    {
+        $assignments = Quiz::where('status', '=', "active")->where('type', '=', "lessons")->get();
+        error_log(count($assignments) . "This is the damn id");
+        //changing to real file path
+        foreach ($assignments as $ass) {
+            $ass['path'] = Storage::url($ass['path']);
+//            return Storage::download($ass['path']);
+        }
+
+        return view('auth.teacherviewLessons')->with('assignments', $assignments);
 
     }
 
